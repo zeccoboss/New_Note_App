@@ -1,0 +1,62 @@
+[
+  {
+    "id": "note-1",
+    "title": "My First Note",
+    "content": "This is a test note",
+    "date": "2025-08-06"
+  },
+  {
+    "id": 2,
+    "title": "Sunday Note",
+    "content": "Just indoors with nothing much to do.",
+    "date": "2025-03-17"
+  },
+  {
+    "id": 3,
+    "title": "First Note",
+    "content": "This is just to test note structure.",
+    "date": "2025-08-06"
+  },
+  {
+    "id": 4,
+    "title": "Hidden Structure Note",
+    "content": "There are bunch of stuff to do in order to structure.",
+    "date": "2025-04-06"
+  },
+  {
+    "id": 5,
+    "title": "Evening Thoughts",
+    "content": "A cool evening breeze while reviewing code.",
+    "date": "2025-07-14"
+  },
+  {
+    "id": 6,
+    "title": "Random Idea",
+    "content": "Thought of a new feature to try out in the project.",
+    "date": "2025-02-25"
+  },
+  {
+    "id": 7,
+    "title": "Debug Day",
+    "content": "Spent hours fixing a silly bug caused by a missing semicolon.",
+    "date": "2025-05-19"
+  },
+  {
+    "id": 8,
+    "title": "Music Mood",
+    "content": "Listened to some calm tracks while coding.",
+    "date": "2025-01-30"
+  },
+  {
+    "id": 9,
+    "title": "Quick Note",
+    "content": "Reminder to refactor the note rendering function.",
+    "date": "2025-06-02"
+  },
+  {
+    "id": 10,
+    "title": "Final Test Note",
+    "content": "Last entry for this testing dataset.",
+    "date": "2025-08-10"
+  }
+]
