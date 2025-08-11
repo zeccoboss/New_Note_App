@@ -7,7 +7,7 @@ import dateHandler from '../utils/dateHandler.js';
 
 
 // Import classes
-import SetElementAttributes from '/src/utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/setElementAttributes.js';
 
 const NoteForm = () => {
   // Create element 
