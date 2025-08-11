@@ -1,4 +1,4 @@
-import setElementAttributes from '/src/utils/setElementAttributes.js';
+import setElementAttributes from '../utils/setElementAttributes.js';
 
 const Input = () => {
   // Create input element 

@@ -1,5 +1,5 @@
 // Import classes 
-import SetElementAttributes from '/src/utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/setElementAttributes.js';
 
 const NoteCard = ({id, title, content, date}) => {
   const noteCard = document.createElement('div');

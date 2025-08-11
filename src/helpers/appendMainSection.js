@@ -1,4 +1,4 @@
-import Main from '/src/components/MainBody.js';
+import Main from '../components/MainBody.js';
 
 // Core function
 const appendMainSectionToDOM = async () => {

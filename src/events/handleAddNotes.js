@@ -1,5 +1,5 @@
 // Import helpers
-import saveNote from '/src/helpers/saveNote.js';
+import saveNote from '../helpers/saveNote.js';
 
 const handleAddNotes = (event) => {
   // Get elements from DOM 

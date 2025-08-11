@@ -1,8 +1,8 @@
 // Import classes 
-import SetElementAttributes from '/src/utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/setElementAttributes.js';
 
 // Import fragments 
-import HeaderNav from '/src/fragments/HeaderNav.js';
+import HeaderNav from '../fragments/HeaderNav.js';
 
 const Header = () => {
   // Create elements 

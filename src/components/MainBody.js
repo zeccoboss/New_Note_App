@@ -1,13 +1,13 @@
 // Import fragments 
-import Note from '/src/fragments/NoteCard.js';
-import NoteSection from '/src/fragments/NoteSection.js';
-import SettingsSection from '/src/fragments/SettingsSection.js';
+import Note from '../fragments/NoteCard.js';
+import NoteSection from '../fragments/NoteSection.js';
+import SettingsSection from '../fragments/SettingsSection.js';
 
 // Import class
-import SetElementAttributes from '/src/utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/setElementAttributes.js';
 
 // Import service handler 
-import { getNoteData } from '/service/notesService.js';
+import { getNoteData } from '../../service/notesService.js';
 
 
 const Main = async () => {

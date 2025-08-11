@@ -1,11 +1,11 @@
 // Import fragments 
-import Note from '/src/fragments/NoteCard.js';
+import Note from './NoteCard.js';
 
 // Import class
-import SetElementAttributes from '/src/utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/setElementAttributes.js';
 
 // Import service handler 
-import { getNoteData } from '/service/notesService.js';
+import { getNoteData } from '../../service/notesService.js';
 
 const NoteSection = async () => {
   // Create element

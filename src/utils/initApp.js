@@ -1,13 +1,13 @@
 // Import helpers
-import appendMainSectionToDOM from '/src/helpers/appendMainSection.js';
+import appendMainSectionToDOM from '../helpers/appendMainSection.js';
 
 // Import handler's
-import dateHandler from '/src/utils/dateHandler.js';
-import addNotes from '/src/helpers/addNotes.js';
-import handleMoreAction from '/src/events/handleMoreAction.js';
+import dateHandler from '../utils/dateHandler.js';
+import addNotes from '../helpers/addNotes.js';
+import handleMoreAction from '../events/handleMoreAction.js';
 
 // Import events
-import returnHome from '/src/events/returnHome.js';
+import returnHome from '../events/returnHome.js';
 
 // Core function to link all functionality 
 const initApp = async () => {

@@ -1,9 +1,9 @@
 // Import classes 
-import SetElementAttributes from '/src/utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/setElementAttributes.js';
 
 //Import fragments 
-import ReturnNavContainer from '/src/fragments/ReturnNavContainer.js';
-import NavContent from '/src/fragments/NavContent.js';
+import ReturnNavContainer from './ReturnNavContainer.js';
+import NavContent from './NavContent.js';
 
 const HeaderNav = () => {
   const headerNav = document.createElement('nav');

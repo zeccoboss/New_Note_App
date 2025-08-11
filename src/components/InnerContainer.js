@@ -1,9 +1,9 @@
 // Import components
-import Main from '/src/components/MainBody.js';
-import Aside from '/src/components/Aside.js';
+import Main from './MainBody.js';
+import Aside from './Aside.js';
 
 // Import class
-import SetElementAttributes from '/src/utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/setElementAttributes.js';
 
 const InnerContainer = () => {
   const innerContainer = document.createElement('div');

@@ -1,9 +1,9 @@
 // Import components
-import Input from '/src/fragments/Input.js';
-import TextArea from '/src/fragments/TextArea.js';
+import Input from './Input.js';
+import TextArea from './TextArea.js';
 
 // Import handler's
-import dateHandler from '/src/utils/dateHandler.js';
+import dateHandler from '../utils/dateHandler.js';
 
 
 // Import classes

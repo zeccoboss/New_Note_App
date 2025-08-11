@@ -1,5 +1,5 @@
 // Import classes 
-import SetElementAttributes from '/src/utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/setElementAttributes.js';
 
 const ReturnNavContainer = () => {
   const returnNavContainer = document.createElement('div');
