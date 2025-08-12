@@ -23,17 +23,21 @@ const NoteSection = async () => {
   console.log(noteData)
   
   if (noteData.length === 0) {
-    const emptyState = document.createElement('p');
+    const emptyState = document.createElement('div');
+
+    const emptyStateP = document.createElement('p');
     const createNoteButton = document.createElement('button');
     
-    emptyState.innerText = 'No notes found📝';
+    emptyStateP.innerText = 'No notes found📝';
     createNoteButton.innerText = 'Create note ';
     
     emptyState.classList.add('empty_state');
     createNoteButton.classList.add('create_note_button', 'button');
     
-    noteSection.append(emptyState, createNoteButton);
+    emptyState.append(emptyStateP, createNoteButton);
+    noteSection.append(emptyState);
   } else {
+    noteSection.innerHTML = 'Loading...'
     noteData.forEach(note => {
       noteSection.append(Note({ ...note }));
     });

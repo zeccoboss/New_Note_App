@@ -17,7 +17,7 @@
   
   /* Font */
   --FTSIZE: 1.1rem;
-  --FTCOLOR: hsla(262, 24%, 29%, 1);
+  --FTCOLOR: hsla(262, 24%, 29%, 0.79);
   
   /* Colors */
   --BG-COLOR: hsla(259, 0%, 84%, 1);
@@ -281,9 +281,9 @@ body {
 .note_section {
   padding: var(--PADDING);
   animation: show-note-card-section 0.7s 0s linear both;
-  padding-bottom: 15rem;
   display: flex;
   flex-flow: column nowrap;
+  height: 100%;
 }
 
 @keyframes show-note-card-section {
@@ -329,6 +329,11 @@ body {
   text-align: center;
   font-size: 1rem;
   padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  min-height: 100%;
 }
 
 .create_note_button {
