@@ -1,4 +1,4 @@
-const notesUrl = './model/notes.json';
+const notesUrl = '../public/notes.json';
 
 const getNoteData = async () => {
   try {
