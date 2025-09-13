@@ -1,4 +1,4 @@
-const notesUrl = '../public/notes.json';
+const notesUrl = '../model/notes.json';
 
 const getNoteData = async () => {
   try {
@@ -19,7 +19,7 @@ const updateNote = () => {
 }
 
 const deleteNote = () => {
-  console.log('Note deleted!');
+    console.log('Note deleted!');
 }
 
 const createNote = () => {

@@ -20,6 +20,7 @@ const InnerContainer = () => {
     Aside()
   )
   
+  // Return innerContainer element
   return innerContainer;
 }
 

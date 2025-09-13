@@ -20,7 +20,7 @@ const NoteSection = async () => {
   
   const noteData = await getNoteData();
   
-  console.log(noteData)
+  // console.log(noteData)
   
   if (noteData.length === 0) {
     const emptyState = document.createElement('div');

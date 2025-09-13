@@ -4,10 +4,12 @@ const Input = () => {
   // Create input element 
   const input = document.createElement('input');
   
+  const inputAttributes = new setElementAttributes(input);
+
   // Set attributes to input element 
-  input.classList.add('note_title_input');
-  input.id = 'note-title-input';
-  input.setAttribute('placeholder', 'Title...');
+  inputAttributes.addClass('note_title_input');
+  inputAttributes.setId('note-title-input');
+  inputAttributes.setPlaceHolder('Title...');
   
   // Return input element 
   return input;

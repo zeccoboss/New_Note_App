@@ -5,7 +5,7 @@ class setElementAttributes {
   }
   
   showElement() {
-    console.log(this.element)
+    console.log(this.element);
     return this.element;
   }
   

@@ -10,6 +10,7 @@ const TextArea = () => {
   
   // Set attributes 
   TextAreaAttributes.addClass('note_textarea');
+  TextAreaAttributes.setId('note-textarea');
   TextAreaAttributes.setPlaceHolder('Start typing...');
   
   // Return textarea

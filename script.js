@@ -1,5 +1,5 @@
 const getData = async (arg) => {
-  try {
+try {
     const res = await fetch('/model/notes.json');
     if (!res.ok) {
       throw new Error('Could not fetch notes')
@@ -9,7 +9,8 @@ const getData = async (arg) => {
     
     console.log(notes)
   } catch (e) {
-    console.error(e)
+    console.error(e);
+    dws
   }
 }
 

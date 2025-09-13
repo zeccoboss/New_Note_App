@@ -1,6 +1,9 @@
 // Import classes 
 import SetElementAttributes from '../utils/setElementAttributes.js';
 
+// Import SVG's
+import { addNoteSvg, checkOneSvg, exitSvg, gearSvg, menuSvg, refreshSvg, rightAngleSvg } from '../assets/svg/svg-icons.js';
+
 const NavContent = () => {
   const navContent = document.createElement('div');
   
@@ -15,24 +18,25 @@ const NavContent = () => {
   navContent.innerHTML = `
     <li class="nav_list_items">
       <button class="button add_note">
-      +
+        ${addNoteSvg}
       </button>
     </li>
   
     <li class="nav_list_items more_action_container">
       <div class="">
         <button class="button show_more_action_button" id="show-more-action-button">
-          <span>More</span>
-          <span id="action-flow" class="">&gt</span>
+          
+          <span>${menuSvg}</span>
+          <span id="action-flow" class="">${rightAngleSvg}</span>
         </button>
       </div>
       
       <div class="more_action_content">
         <ul class="more_action_list" id="more-action-list">
-          <li class="more_action_button" id="refresh-action-button">Refresh</li>
-          <li class="more_action_button">Settings</li>
-          <li class="more_action_button">Select</li>
-          <li class="more_action_button">Exit</li>
+          <li class="more_action_button" id="refresh-action-button"><span>${refreshSvg}</span>Refresh</li>
+          <li class="more_action_button"><span>${gearSvg}</span>Settings</li>
+          <li class="more_action_button"><span>${checkOneSvg}</span>Select</li>
+          <li class="more_action_button"><span>${exitSvg}</span>Exit</li>
         </ul>
       </div>
     </li>

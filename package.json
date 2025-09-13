@@ -1,0 +1,19 @@
+{
+  "name": "new_note_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeccoboss/New_Note_App.git"
+  },
+  "author": "zecco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeccoboss/New_Note_App/issues"
+  },
+  "homepage": "https://github.com/zeccoboss/New_Note_App#readme"
+}
