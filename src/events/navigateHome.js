@@ -1,7 +1,11 @@
+// Import fragments 
+import saveNote from "../helpers/saveNote.js";
+
 const navigateHome  = (event) => {
     // Get elements from DOM 
     const navHeading = document.querySelector('.header_nav_heading');
-    const aside = document.querySelector('.aside');
+    const formSection = document.getElementById('enter-new-note-section');
+
     const main = document.querySelector('.main');
     const addNotesButton = document.querySelector('.add_note');
     const returnButton = document.querySelector('.return_button');
@@ -12,13 +16,7 @@ const navigateHome  = (event) => {
     const settingsBtn = document.querySelector('#settings-btn');
     const moreActionBtn = document.querySelector('#show-more-action-button');
 
-    	// Add classes for accesibility
-
-    if (aside,classList.contains('nrfjkc')) {
-        aside.classList.remove('active_section');
-        main.classList.add('active_section');
-	    returnButton.classList.toggle('show_return_button');
-    }
+    saveNote();
 }
 
 export default navigateHome;

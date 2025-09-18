@@ -1,17 +1,12 @@
+// Import events
+import handleNewNote from '../events/handleNewNote.js';
+
 const saveNote = (navHeading, addNotesButton, returnButton) => {
-  const aside = document.querySelector('.aside');
-  const main = document.querySelector('.main');
-  const titleInput = document.querySelector('note_title_input');
-  const searchInput = document.querySelector('.search_input');
+    // Get values from textarea and input
+    const { title, note} =  handleNewNote();
 
-  searchInput.style.position = 'static';
-  addNotesButton.textContent = 'Add note';
-  addNotesButton.style.visibility = 'visible';
-  aside.classList.remove('active_section');
-  main.classList.add('active_section');
-  navHeading.textContent = 'Notes';
-
-  console.log(returnButton);
+    console.log(title);
+    console.log(note);
 }
 
 export default saveNote;

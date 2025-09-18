@@ -12,10 +12,8 @@ const SettingsSection = () => {
   SettingsSectionAttributes.setId('settings-section');
   SettingsSectionAttributes.addClass('settings_section');
   
-  
   settingsSection.innerHTML = `
     <h1>Settings</h1>
-    
   `;
   
   return settingsSection;

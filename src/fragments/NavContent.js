@@ -7,7 +7,6 @@ import { addNoteSvg, checkOneSvg, exitSvg, gearSvg, menuSvg, refreshSvg, rightAn
 const NavContent = () => {
   const navContent = document.createElement('div');
   
-  
   // initiate instance of SetElementAttributes class
   const NavContentAttributes = new SetElementAttributes(navContent);
   
@@ -23,22 +22,36 @@ const NavContent = () => {
     </li>
   
     <li class="nav_list_items more_action_container">
-      <div class="">
-        <button class="button show_more_action_button" id="show-more-action-button">
-          
-          <span>${menuSvg}</span>
-          <span id="action-flow" class="">${rightAngleSvg}</span>
-        </button>
-      </div>
-      
-      <div class="more_action_content">
-        <ul class="more_action_list" id="more-action-list">
-          <li class="more_action_button" id="refresh-action-button"><span>${refreshSvg}</span>Refresh</li>
-          <li class="more_action_button"><span>${gearSvg}</span>Settings</li>
-          <li class="more_action_button"><span>${checkOneSvg}</span>Select</li>
-          <li class="more_action_button"><span>${exitSvg}</span>Exit</li>
-        </ul>
-      </div>
+        <div class="">
+            <button class="button show_more_action_button" id="show-more-action-button">
+            <span>${menuSvg}</span>
+            <span id="action-flow" class="">${rightAngleSvg}</span>
+            </button>
+        </div>
+        
+        <div class="more_action_content">
+            <ul class="more_action_list" id="more-action-list"> 
+                <li class="more_action_button" id="refresh-action-button">
+                    ${refreshSvg}
+                    <span class="more_action_span">Refresh</span>
+                </li>
+
+                <li class="more_action_button" id="settings-action-button">
+                    ${gearSvg}
+                    <span class="more_action_span">Settings</span>
+                </li>
+
+                <li class="more_action_button" id="select-action-button">
+                    ${checkOneSvg}
+                    <span class="more_action_span">Select</span>
+                </li>
+
+                <li class="more_action_button" id="exit-action-button">
+                    ${exitSvg}
+                    <span class="more_action_span">Exit</span>
+                </li> 
+            </ul>
+        </div>
     </li>
   `;
   

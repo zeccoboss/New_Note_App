@@ -8,6 +8,7 @@ import SetElementAttributes from '../utils/setElementAttributes.js';
 
 // Import service handler 
 import { getNoteData } from '../../service/notesService.js';
+import FormSection from '../fragments/FormSection.js';
 
 
 const Main = async () => {
@@ -19,11 +20,11 @@ const Main = async () => {
   
   // Set attributes 
   MainAttributes.setId('main');
-  MainAttributes.addClass('main', 'active_section');
+  MainAttributes.addClass('main');
   
   const noteSection = await NoteSection();
-  
-  main.append(noteSection, SettingsSection());
+    
+  main.append(noteSection, SettingsSection(), FormSection());
   
   return main;
 }
