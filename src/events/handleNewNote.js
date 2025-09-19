@@ -1,6 +1,8 @@
+import selectElements from "../helpers/selectElements.js";
+
 const handleNewNote = () => {
-  const titleInput = document.querySelector('.note_title_input');
-  const noteTextArea = document.querySelector('#note-textarea');
+  const { titleInput, noteTextArea  } = selectElements();
+
 
   let title = undefined;
   let note = undefined;

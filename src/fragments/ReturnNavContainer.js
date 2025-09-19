@@ -3,7 +3,6 @@ import SetElementAttributes from '../utils/setElementAttributes.js';
 
 // Import SVG's
 import { homeSvg } from '../assets/svg/svg-icons.js';
-import navigateHome from '../events/navigateHome.js';
 
 const ReturnNavContainer = () => {
     const returnNavContainer = document.createElement('div');
@@ -32,9 +31,8 @@ const ReturnNavContainer = () => {
     returnNavContainer.appendChild(navListItems);
     navListItems.appendChild(returnHomeBtn);
 
-    returnHomeBtn.addEventListener('click', navigateHome)
-    // 
-    return returnNavContainer;
+    // Return returnNavContainer element
+     return returnNavContainer;
 }
 
 export default ReturnNavContainer;

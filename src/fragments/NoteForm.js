@@ -15,19 +15,10 @@ const NoteForm = () => {
 	const timeElement = document.createElement('span');
 	const saveButton = document.createElement('button');
 
-	timeElement.innerHTML = `${dateHandler()}`;
-	timeElement.style.fontSize = '0.7rem';
-
-	timeElement.style.paddingLeft = '0.5rem';
-	saveButton.innerText = '✅';
-	saveButton.id = 'save-button';
-	saveButton.classList.add('save_button', 'button');
-	
 	// initiate instance of SetElementAttributes class
 	const FormAttributes = new SetElementAttributes(form);
 	const timeElementAttributes = new SetInnerHTML(timeElement);
 	const saveButtonAttributes = new SetInnerHTML(saveButton);
-
 	
 	// Set attributes 
 	FormAttributes.setId('note-form');
@@ -36,8 +27,15 @@ const NoteForm = () => {
 	timeElementAttributes.setId('form-time-element')
 	timeElementAttributes.addClass('form_time_element');
 
+	saveButtonAttributes.setId('save-button');
+	saveButtonAttributes.addClass('save_button', 'button');
+
 	// timeElementAttributes.showElement();
 	// saveButtonAttributes.showElement();
+
+	// Set innerHTML and innerText
+	timeElementAttributes.setInnerHTML(`${dateHandler()}`);
+	saveButtonAttributes.setInnerText('✅');
 	
 	// Add element to DOM
 	form.append(

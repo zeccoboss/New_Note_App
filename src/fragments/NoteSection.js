@@ -16,7 +16,7 @@ const NoteSection = async () => {
     
     // Set attributes 
     NoteSectionAttributes.setId('note-section');
-    NoteSectionAttributes.addClass('note_section');
+    NoteSectionAttributes.addClass('note_section', 'section', 'active_section');
     
     const noteData = await getNoteData();
     

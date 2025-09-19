@@ -14,7 +14,7 @@ const FormSection = () => {
 
     // Set attributes 
     FormSectionAttributes.setId('form-section');
-    FormSectionAttributes.addClass('form_section', 'active_section');
+    FormSectionAttributes.addClass('form_section', 'section');
 
     FormSectionHeading.setId('form-section-heading');
     FormSectionHeading.addClass('form_section_heading');

@@ -199,10 +199,7 @@ body {
 }
 
 .return_button {
-  /* position: absolute;
-  left: -100px; */
   visibility: hidden;
-  /* padding: var(--PADDING); */
 }
 
 .show_return_button {
@@ -247,6 +244,10 @@ body {
 	font-weight: 600;
 }
 
+.search_input::placeholder {
+	color: rgb(206, 205, 205);
+}
+
 .main {
 	height: 100%;
 	transition: var(--TRANSITION);
@@ -266,10 +267,18 @@ body {
 .note_section,
 .settings_section,
 .form_section {
-	padding: 0;
 	margin: 0;
 	height: 0;
+	overflow: hidden;
 }
+
+.active_section {
+	height: 100%;
+	animation: fade-sections 0.7s linear;
+	animation: show-note-card-section 0.7s 0s linear both;
+	padding: calc(var(--PADDING) - 0.2rem);
+}
+
 
 .note_section {
 	display: flex;
@@ -286,17 +295,9 @@ body {
 	max-width: 30rem;
 }
 
-/* Declaration not neccesary at the moment buh okay for refrence and adjustment */
 .form_section {
-	overflow-x: hidden;
+	padding: 0;
 	background-color: hsla(0, 12%, 8%, 0.623);
-}
-
-.active_section {
-	height: 100%;
-	animation: fade-sections 0.7s linear;
-	padding: var(--PADDING);
-	animation: show-note-card-section 0.7s 0s linear both;
 }
 
 @keyframes fade-sections {
@@ -395,6 +396,13 @@ body {
 	position: relative;
 }
 
+.form_time_element {
+	font-size: 0.7rem;
+	padding-left: 0.5rem;
+	color: rgb(194, 194, 194);
+	/* text-align: center; */
+} 
+
 .note_title_input,
 .note_textarea {
 	font-size: calc(var(--FTSIZE) + 0.5rem);
@@ -406,6 +414,11 @@ body {
 	background-color: var(--ACCENT);
 	font-family: Arial, Helvetica, sans-serif;
 	background-color: hsla(0, 0%, 0%, 0.14);
+}
+
+.note_title_input::placeholder,
+.note_textarea::placeholder {
+	color: gray;
 }
 
 .note_title_input {
