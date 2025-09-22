@@ -1,7 +1,5 @@
 // Import SVG's
 import { pencilSvg } from "../assets/svg/svg-icons.js";
-
-// Import helpers
 import selectElements from "./selectElements.js";
 
 const hideButtons = () => {
@@ -14,8 +12,6 @@ const hideButtons = () => {
     selectAllBtn.style.visibility = "hidden";
     settingsBtn.style.visibility = "hidden";
     moreActionBtn.style.visibility = "hidden";
-
-    console.log('Hide buttons function called...');
 }
 
 export default hideButtons;

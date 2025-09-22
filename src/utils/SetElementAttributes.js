@@ -1,11 +1,10 @@
-class setElementAttributes {
+class SetElementAttributes {
     constructor(element) {
-        this.element = element
+        this.element = element;
     }
     
     showElement() {
         console.log(this.element);
-        return this.element;
     }
     
     setId(id) {
@@ -47,4 +46,4 @@ class setElementAttributes {
     }
 }
 
-export default setElementAttributes;
+export default SetElementAttributes;

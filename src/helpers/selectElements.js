@@ -1,25 +1,31 @@
-const selectElements = () => {
+const selectElements = (mainElement, mainSoteSection) => {
     // Get elements from DOM
     const navHeading = document.querySelector(".header_nav_heading");
     const searchInput = document.querySelector(".search_input");
     const titleInput = document.querySelector(".note_title_input");
     const noteTextArea = document.querySelector('#note-textarea');
+    const moreActionList = document.querySelector('.more_action_list');
 
-    const main = document.querySelector('.main');
-    const sections = Array.from(main.getElementsByClassName('section'));
-    const formSection = document.getElementById('form-section');
-    const noteSection = document.querySelector(".note_section");
-    const moreActionTogller = document.querySelector('#show-more-action-button');
-	const moreActionList = document.querySelector('#more-action-list');
-	const moreActionFlow = document.querySelector('#action-flow');
+    const innerContainer = document.querySelector('.inner_container')
+    const main = innerContainer.querySelector('main');
+    const formSection = document.querySelector('.form_section');
+    const noteSection  = document.getElementById('note-section');
+    const settingsSection = document.querySelector("#settings-section");
+    const trashSection = innerContainer.querySelector('#trash-section');
 
     const returnButton = document.querySelector(".return_button");
     const addNotesButton = document.querySelector(".add_note");
     const selectAllBtn = document.querySelector("#select-all-btn");
     const moreActionBtn = document.querySelector("#show-more-action-button");
     const settingsBtn = document.querySelector("#settings-btn");
+    const trashActionBtn = document.querySelector('#trash-action-button');
+    const selectActionBtn = document.querySelector('#select-action-button')
 
-    return { navHeading, searchInput, titleInput, noteTextArea, main, sections, noteSection, formSection, moreActionTogller, moreActionList, moreActionFlow, returnButton, addNotesButton, selectAllBtn, moreActionBtn, settingsBtn };
+    if (!navHeading && !searchInput && !titleInput && !noteTextArea) {
+        
+    }
+
+    return { navHeading, searchInput, titleInput, noteTextArea, main, noteSection, settingsSection, formSection,trashSection, returnButton, addNotesButton, selectActionBtn, selectAllBtn, moreActionBtn, settingsBtn, trashActionBtn, moreActionList };
 }
 
-export default selectElements;
+export default selectElements; 

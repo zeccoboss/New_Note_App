@@ -1,5 +1,5 @@
 // Import class
-import SetElementAttributes from '../utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/SetElementAttributes.js';
 
 import NoteForm from '../fragments/NoteForm.js';
 

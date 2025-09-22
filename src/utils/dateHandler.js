@@ -1,6 +1,5 @@
 const dateHandler = () => {
   const date = new Date();
-  
   const year = date.toDateString();
   const time = date.toLocaleTimeString();
 

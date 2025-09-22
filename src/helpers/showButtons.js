@@ -1,8 +1,8 @@
 // Import SVG's
 import { pencilSvg } from "../assets/svg/svg-icons.js";
+import selectElements from "./selectElements.js";
 
 // Import helpers
-import selectElements from "./selectElements.js";
 
 const showButtons = () => {
     // Get elements form getElements module
@@ -15,8 +15,6 @@ const showButtons = () => {
     selectAllBtn.style.visibility = "visible";
     settingsBtn.style.visibility = "visible";
     moreActionBtn.style.visibility = "visible";
-
-    console.log('Show buttons function called...');
 }
 
 export default showButtons;

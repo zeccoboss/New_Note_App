@@ -1,5 +1,5 @@
 // Import class
-import SetElementAttributes from '../utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/SetElementAttributes.js';
 
 // Import fragments 
 import NoteForm from './NoteForm.js';
@@ -22,8 +22,10 @@ const FormSection = () => {
     formSectionHeading.innerText = 'Enter Notes';
     formSectionHeading.style.paddingLeft = '0.5rem';
     
+    const { form } = NoteForm()
+
     formSection.append(
-        NoteForm()
+        form
     );
     
     // Return formSection element 

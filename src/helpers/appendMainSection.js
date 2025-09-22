@@ -3,7 +3,7 @@ import Main from '../components/MainBody.js';
 // Core function
 const appendMainSectionToDOM = async () => {
   const mainElement = await Main();
-  const innerContainer = document.querySelector('.inner_container')
+  const innerContainer = document.querySelector('.inner_container');
   
   innerContainer.appendChild(mainElement);
 }

@@ -1,17 +1,24 @@
 // Import fragments 
+import { savedNoteAppTheme } from "../events/appTheme.js";
+import selectElements from "./selectElements.js";
 import saveNote from "./saveNote.js";
 
 // Import helpers
-import selectElements from "./selectElements.js";
 import showButtons from "./showButtons.js";
+
+
 
 const navigateHome  = (event) => {
     // Destruct and get elements from the selectElements fintion
-    const { sections, noteSection, navHeading } = selectElements();
+    const sections = Array.from(main.querySelectorAll('.section'));
+
+    const { noteSection, navHeading } = selectElements();
 
     // Increase font size and add innerHTML
     navHeading.innerHTML = "Notes";
     navHeading.style.fontSize = "2.2rem";
+
+    document.querySelector('#app').classList.add(JSON.parse(localStorage.getItem('saved-note-app-theme')));
 
     // Filter the sections and return all which does not match the section
     const filteredections = sections.filter(setion => setion !== noteSection);
@@ -26,7 +33,7 @@ const navigateHome  = (event) => {
     showButtons();
 
     // Save notes if content are added to input or textarea
-    saveNote();
+    saveNote(event);
 }
 
 export default navigateHome;

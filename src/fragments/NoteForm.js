@@ -6,14 +6,20 @@ import TextArea from './TextArea.js';
 import dateHandler from '../utils/dateHandler.js';
 
 // Import classes
-import SetElementAttributes from '../utils/setElementAttributes.js';
 import SetInnerHTML from '../utils/SetInnerHTML.js';
+import handleNewNote from '../events/handleNewNote.js';
+
+// Import events
+import SetElementAttributes from '../utils/SetElementAttributes.js';
 
 const NoteForm = () => {
 	// Create element 
 	const form = document.createElement('form');
 	const timeElement = document.createElement('span');
 	const saveButton = document.createElement('button');
+
+	// 
+	const currentTime = dateHandler();
 
 	// initiate instance of SetElementAttributes class
 	const FormAttributes = new SetElementAttributes(form);
@@ -34,7 +40,7 @@ const NoteForm = () => {
 	// saveButtonAttributes.showElement();
 
 	// Set innerHTML and innerText
-	timeElementAttributes.setInnerHTML(`${dateHandler()}`);
+	timeElementAttributes.setInnerHTML(`${currentTime}`);
 	saveButtonAttributes.setInnerText('✅');
 	
 	// Add element to DOM
@@ -44,9 +50,12 @@ const NoteForm = () => {
 		TextArea(),
 		saveButton
 	)
+
+	// Call to save new note
+	handleNewNote(Input(), TextArea(), form);
 	
 	// Return form element 
-	return form;
+	return { form, currentTime };
 }
 
 // Export NoteForm

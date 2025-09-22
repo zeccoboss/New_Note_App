@@ -1,41 +1,45 @@
 // Import classes 
-import SetElementAttributes from '../utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/SetElementAttributes.js';
+import CreateElement from "../utils/CreateElement.js";
+
 
 const NoteCard = ({id, title, content, date}) => {
-  const noteCard = document.createElement('div');
-  const noteTitle = document.createElement('h5');
-  const noteContent = document.createElement('p');
-  const noteDate = document.createElement('small');
+    const noteCard = document.createElement('div');
+    const noteTitle = document.createElement('h4');
+    const noteContent = document.createElement('p');
+    const noteDate = document.createElement('small');
+    const noteCheckBoxBtn = new CreateElement('button');
 
-  // Initiate instance of SetElementAttributes
-  const NoteCardAttributes = new SetElementAttributes(noteCard);
-  const NoteTitleAttributes = new SetElementAttributes(noteTitle);
-  const NoteContentAttributes = new SetElementAttributes(noteContent);
-  const NoteDateAttributes = new SetElementAttributes(noteDate);
+	noteCheckBoxBtn.setType('checkbox');
+    noteCheckBoxBtn.setInnerText('C');
+    
 
-  // Set NoteCard attributes 
-  NoteCardAttributes.setId(id);
-  NoteCardAttributes.addClass('note_card');
-  
-    // Set noteTitle attributes 
-  NoteTitleAttributes.addClass('note_title');
-  
-    // Set noteContent attributes 
-  NoteContentAttributes.addClass('note_content');
-  
-    // Set noteDate attributes 
-  NoteDateAttributes.addClass('note_date');
-  
-  // Set elements textContent
-  noteTitle.textContent = title;
-  noteContent.textContent = content;
-  noteDate.textContent = date;
+    // Initiate instance of SetElementAttributes
+    const NoteCardAttributes = new SetElementAttributes(noteCard);
+    const NoteTitleAttributes = new SetElementAttributes(noteTitle);
+    const NoteContentAttributes = new SetElementAttributes(noteContent);
+    const NoteDateAttributes = new SetElementAttributes(noteDate);
 
-  // Set innerHTML
-  noteCard.append(noteTitle, noteContent, noteDate)
-  // NoteContainerAttributes.showElement()
-  // Return noteContainer element 
-  return noteCard;
+    // Set NoteCard attributes 
+    NoteCardAttributes.setId(id);
+    NoteCardAttributes.addClass('note_card');
+
+    NoteTitleAttributes.addClass('note_title');
+    NoteContentAttributes.addClass('note_content');
+    NoteDateAttributes.addClass('note_date');
+
+	noteCheckBoxBtn.addClass('note_checkbox_btn');
+	noteCheckBoxBtn.setId(`card-btn-${id}`);
+    
+    // Set elements textContent
+    noteTitle.textContent = title;
+    noteContent.textContent = content;
+    noteDate.textContent = date;
+
+    // Set innerHTML
+    noteCard.append(noteTitle, noteContent, noteDate, noteCheckBoxBtn.getElement());
+
+    return noteCard;
 }
 
 export default NoteCard;

@@ -2,7 +2,7 @@
 import Main from './MainBody.js';
 
 // Import class
-import SetElementAttributes from '../utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/SetElementAttributes.js';
 
 const InnerContainer = () => {
   const innerContainer = document.createElement('div');

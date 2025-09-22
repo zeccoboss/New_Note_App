@@ -1,5 +1,5 @@
 // Import classes 
-import SetElementAttributes from '../utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/SetElementAttributes.js';
 
 // Import SVG's
 import { addNoteSvg, checkOneSvg, exitSvg, gearSvg, menuSvg, refreshSvg, rightAngleSvg } from '../assets/svg/svg-icons.js';
@@ -44,6 +44,11 @@ const NavContent = () => {
                 <li class="more_action_button" id="select-action-button">
                     ${checkOneSvg}
                     <span class="more_action_span">Select</span>
+                </li>
+
+                <li class="more_action_button" id="trash-action-button">
+                    ${'T'}
+                    <span class="more_action_span">Trash</span>
                 </li>
 
                 <li class="more_action_button" id="exit-action-button">

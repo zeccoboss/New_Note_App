@@ -1,5 +1,5 @@
 // Import classes 
-import SetElementAttributes from '../utils/setElementAttributes.js';
+import SetElementAttributes from '../utils/SetElementAttributes.js';
 
 //Import fragments 
 import ReturnNavContainer from './ReturnNavContainer.js';

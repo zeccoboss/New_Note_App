@@ -10,58 +10,184 @@
 
 <body>
 <nav class="header_nav">
-  <ul class="header_nav_list">
-    <div class="return_nav_container">
-      <li class="nav_list_items">
-        <button class="return_button button" type="button">🏠</button>
-      </li>
-    </div>
-    
-    <div class="nav_content">
-      <li class="nav_list_items">
-        <button class="button add_note">
-          Add note
-        </button>
-      </li>
-      
-      <li class="nav_list_items more_action_container">
-        <div class="">
-          <button class="button show_more_action">
-            <span>More</span>
-            <span>&gt</span>
-          </button>
-        </div>
+	<ul class="header_nav_list">
+		<div class="return_nav_container">
+		<li class="nav_list_items">
+			<button class="return_button button" type="button">🏠</button>
+		</li>
+		</div>
+
+		<h1 class="header_nav_heading"></h1>
+
+		
+		<div class="nav_content">
+		<li class="nav_list_items">
+			<button class="button add_note">
+			Add note
+			</button>
+		</li>
+		
+		<li class="nav_list_items more_action_container">
+			<div class="">
+			<button class="button show_more_action">
+				<span>More</span>
+				<span>&gt</span>
+			</button>
+			</div>
+			
+			<div class="more_action_content">
+				<ul class="more_action_list">
+					<li class="more_action_button">Refresh</li>
+					<li class="more_action_button">Settings</li>
+					<li class="more_action_button">Select</li>
+					<li class="more_action_button">Exit</li>
+				</ul>
+			</div>
+		</li>
+		</div>
+	</ul>
+	<div class="theme_card" id="theme-card">
+		<label for="app-theme">App theme</label>
+		<select name="theme" id="app-theme">
+			<option value="system_default">System default</option>
+			<option value="dark_theme">Light theme</option>
+			<option value="light_theme">Dark theme</option>
+		</select>
+	</div>
+
+	<div id="profile-card" class="profile_card">
+		<div class="profile_wrapper">
+			<figure id="profile-img-wrapper" class="profile_img_wrapper">
+				<img src="${profileImg}" class="profile_img" loading="lazy" alt="Profile image" width="100" height="100">
+				<figcaption class="profile_img_caption">Profile caption</figcaption>
+			</figure>
+
+			<button id="drop-profile-card-btn" class="drop_profile_card_btn">Drop down</button>
+		</div>
+		
+		<div class="user_details" id="user-details">
+			<h1 class="user_id" id="user-id">User ID: <span class="id-holder"> 00123</span></h1>
+			<p class="user_name" id="user-name">Name: <span class="id-holder"> ZECCO BOSS</span></p>
+			<p class="user_email" id="user-email">Email: <span class="id-holder"> zeccoboss@hotmail.com</span></p>
+			<p class="user_hobbies">Hobby/Hobbies: <span class="id-holder">Coding, Gaming, Playing...</span></p>
+		</div>
+	</div>
+	</nav>
+
+	<form action="">
+		<h3 class="settings_form_heading">Edit data</h3>
+		<input type="text" name="name" id="user-name-input" class="user_name_input settings_form_input" placeholder="Name, (eg. John Doe)">
+		<input type="text" name="nickname" id="user-nicname" class="user_nicname settings_form_input" placeholder="Nck name...">
+		<input type="email" name="email" id="email-input" class="email_input settings_form_input" placeholder="youremail.email.com">
+		<textarea name="" id="" cols="30" rows="5" id="hobbies-textarea" class="hobbies_textarea settings_form_textarea" placeholder="Enter hobbies"></textarea>
+		<div class="settings_form_btm_container">
+			<button type="submit" id="settings-form-submit-btn" class="settings_form_submit_btn settings_form_btn">Done</button>
+			<button type="button" id="settings-form-cancle-btn" class="settings_form_cancle_btn settings_form_btn">Cancle</button>
+		</div>
+	</form>
+
+	<div class="container">
+		<h4 class="note_title">Note Title</h4>
+		<p class="note_intro">Note paragraph</p>
+		<p class="note_day">20 July</p>
+	</div>
+
+	<select name="theme" id="app-theme-list" class="app_theme_list>
+		<option value="none">None specified</option>
+		
+		<option value="system_default">System default</option>
+
+		<option value="light_theme">Light theme</option>
+		
+		<option value="dark_theme">Dark theme</option>
+	</select>
+
+	<div id="app-theme-list" class="app_theme_list">
+		<button id="theme-list-toggler" class="theme_list_toggler">System default</button>
+
+		<div class="theme_btn_container">
+			<button id="system-default-btn" class="app_theme_btn system_default_btn">System default</button>
+			<button id="light-theme-btn" class="app_theme_btn light_theme_btn">Light theme</button>
+			<button id="dark-theme-btn" class="app_theme_btn dark_theme_btn">Dark theme</button>
+		</div>
+	</div>
+
+	<p>lorem*10</p>
+
+	<div class="theme_btn_container">
+		<button id="dark-theme-btn" class="app_theme_btn dark_theme_btn">Dark theme</button>
+		<button id="light-theme-btn" class="app_theme_btn light_theme_btn">Light theme</button>
+		<button id="system-default-btn" class="app_theme_btn system_default_btn">System default</button>
+	</div>
+
+	<div id="2" class="note_card">
+		<h4 class="note_title">Sunday Note</h4>
+		<p class="note_content">Just indoors with nothing much to do.</p>
+		<small class="note_date">2025-03-17</small>
+		<input type="checkbox" name="select" id="">
+	</div>
+	
+	<footer class="settings_form">
+		<nav class="footer_nav">
+		<ul class="footer_nav_list">
+			<li>Footer✅</li>
+			<li>Footer✅</li>
+		</ul>
+		</nav>
+	</footer>
+
+	<script>
+		   if (e.target === cardCheckbox) {
+
+        console.log('kmmmj mjkm');
         
-        <div class="more_action_content">
-          <ul class="more_action_list">
-            <li class="more_action_button">Refresh</li>
-            <li class="more_action_button">Settings</li>
-            <li class="more_action_button">Select</li>
-            <li class="more_action_button">Exit</li>
-          </ul>
-        </div>
-      </li>
-    </div>
-  </ul>
-  
-  <h1 class="header_nav_heading"></h1>
-</nav>
+        if (cardCheckbox.checked) {
+            cardCheckbox.checked = false;
+            currentTarget.removeAttribute('is-selected', 'selected');
+            console.log(currentTarget);
+        } else {
+            cardCheckbox.checked = true;
+            currentTarget.setAttribute('is-selected', 'selected');
+            console.log(currentTarget);
+        }
+
+    } 
+	</script>
 
 
-  <div class="container">
-    <h4 class="note_title">Note Title</h4>
-    <p class="note_intro">Note paragraph</p>
-    <p class="note_day">20 July</p>
-  </div>
-  
-  <footer class="">
-    <nav class="footer_nav">
-      <ul class="footer_nav_list">
-        <li>Footer✅</li>
-        <li>Footer✅</li>
-      </ul>
-    </nav>
-  </footer>
+
+	<script>
+		    
+    if (!cardCheckbox.checked) {
+        cardCheckbox.checked = true;
+        currentTarget.setAttribute('is-selected', 'selected');
+        console.log(currentTarget);
+    } else {
+        cardCheckbox.checked = false;
+        currentTarget.removeAttribute('is-selected', 'selected');
+        console.log(currentTarget);
+    }
+	</script>
+
+	<script>
+		    if (e.target !== cardCheckbox  && !cardCheckbox.checked) {
+        cardCheckbox.checked = true;
+        currentTarget.setAttribute('is-selected', 'selected');
+    } else if (!e.target !== cardCheckbox  && cardCheckbox.checked) {
+        cardCheckbox.checked = false;
+        currentTarget.removeAttribute('is-selected', 'selected');
+    } 
+
+    e.target === cardCheckbox && cardCheckbox.checked ? 
+        (() => {
+            cardCheckbox.checked = true;
+            currentTarget.removeAttribute('is-selected', 'selected');
+        }) ()
+        : (() => {
+            cardCheckbox.checked = true;
+            currentTarget.setAttribute('is-selected', 'selected');
+        }) ();
+	</script>
 </body>
 
 </html>

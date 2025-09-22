@@ -1,25 +1,10 @@
 import selectElements from "../helpers/selectElements.js";
+import saveNote from '../helpers/saveNote.js';
 
-const handleNewNote = () => {
-  const { titleInput, noteTextArea  } = selectElements();
+const handleNewNote = (titleInput, noteTextArea, formSection) => {
+	const saveButton = formSection.querySelector('#save-button')
 
-
-  let title = undefined;
-  let note = undefined;
-
-
-  titleInput.addEventListener('input', (e) => {
-    // title = e.target.value.trim().tolowerCase();
-    title = e.target.value;
-
-    console.log(title);
-  });
-
-  noteTextArea.addEventListener('input', (e) => { 
-    note = e.target.value;
-  });
-
-  return { title, note }
+	saveButton.addEventListener('click', saveNote)
 } 
 
 export default handleNewNote;

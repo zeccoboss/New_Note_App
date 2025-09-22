@@ -1,11 +1,9 @@
-import setElementAttributes from "./setElementAttributes.js";
+import SetElementAttributes from "./SetElementAttributes.js";
 
-class SetInnerHTML extends setElementAttributes {
-    constructor(element, innerText, innerHTML) {
+class SetInnerHTML extends SetElementAttributes {
+    constructor(element) {
         super(element)
         this.element = element;
-        this.innerText = innerText;
-        this.innerHTML = innerHTML;
     }
 
     setInnerText (text) {
