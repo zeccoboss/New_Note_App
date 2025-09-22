@@ -35,15 +35,13 @@ const NoteSection = async () => {
     // Declare to keep track of notes
     let noNotes = true;
 
-    console.log(calledStateOnce && localNoteData.length !== 0);
-    
     calledStateOnce && localNoteData.length !== 0 ? (() => {
         renderNote(localNoteData, noteSection, 1);
             console.warn('Note section of id 0 sent data to render function');
-            console.log('Section note data: ', localNoteData);
+            // console.log('Section note data: ', localNoteData);
         }) () : renderNote([], noteSection, 3);
 
-    calledStateOnce = false;
+        calledStateOnce = false;
 
     noNotes = true;
     // Return noteSection

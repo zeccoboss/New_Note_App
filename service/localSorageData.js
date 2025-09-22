@@ -13,7 +13,4 @@ const getLocalStorageNoteData = async () => {
     }
 }
 
-console.log(getLocalStorageNoteData());
-
-
 export default getLocalStorageNoteData;
