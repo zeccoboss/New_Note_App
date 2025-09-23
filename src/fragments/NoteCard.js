@@ -2,6 +2,9 @@
 import SetElementAttributes from '../utils/SetElementAttributes.js';
 import CreateElement from "../utils/CreateElement.js";
 
+// Import SVG's
+import { unchecBoxkSVG } from '../assets/svg/svg-icons.js';
+
 
 const NoteCard = ({id, title, content, date}) => {
     const noteCard = document.createElement('div');
@@ -11,7 +14,7 @@ const NoteCard = ({id, title, content, date}) => {
     const noteCheckBoxBtn = new CreateElement('button');
 
 	noteCheckBoxBtn.setType('checkbox');
-    noteCheckBoxBtn.setInnerText('C');
+    noteCheckBoxBtn.setInnerHTML(`${unchecBoxkSVG}`);
     
 
     // Initiate instance of SetElementAttributes

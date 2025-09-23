@@ -55,11 +55,11 @@ const saveNote = async (e) => {
     // Check Conditions and save appropraite data
     if (!title && !note) {
         console.warn('Note content not specified by user');
-        // Select element from DOM
+        // Get note section from current scope so valid element can be sent to render notes function
         const noteSection = document.querySelector('.note_section');
 
-        // Call render function when no data specified and return array, null and 3 for error handling
-        renderNote([], noteSection, 3);
+        // Call render function when no data specified and return array, note section and 3 for error handling
+        renderNote([], noteSection, 3); // Must send note section since the render function clears the DOM it completelt wipes the note card selection mood
         return; 
     } else if (title && note) {
         console.log('All note content is specified by user');   

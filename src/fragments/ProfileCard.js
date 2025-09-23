@@ -1,8 +1,12 @@
 // Import classes
 import setElementAttributes from "../utils/SetElementAttributes.js";
 
+// Import SVG's
+import { personProfileSVG } from '../assets/svg/svg-icons.js';
+
 // img path
 const profileImg = '../../public/img/favicon.png';
+
 
 
 const ProfileCard = (dropDownRightAngleSvg, editProfilePencilSvg) => {
@@ -36,6 +40,9 @@ const ProfileCard = (dropDownRightAngleSvg, editProfilePencilSvg) => {
 	profileWrapper.innerHTML = `
 		<figure id="profile-img-wrapper" class="profile_img_wrapper">
 			<img src="${profileImg}" class="profile_img" loading="lazy" alt="Profile image" width="100" height="100">
+
+			${personProfileSVG}
+			
 			<figcaption class="profile_img_caption">Profile caption</figcaption>
 		</figure>
 

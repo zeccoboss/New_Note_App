@@ -1,3 +1,6 @@
+// Import SVG's
+import {checkboxSVG, unchecBoxkSVG } from "../assets/svg/svg-icons.js";
+
 // Declare global variabls for state tracking
 let cardSelectionMood = false;
 let openedSelection = 0;
@@ -16,7 +19,7 @@ const selectBehaviour = (noteSection, cardSelectionMood) => {
             const cardCheckbox = card.querySelector('.note_checkbox_btn'); 
 
 			// Reset add innerHTML and attributes
-            cardCheckbox.innerHTML = 'C';
+            cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
             cardCheckbox.classList.remove('show_note_checkbox_btn');
             cardCheckbox.classList.remove('checked');
             card.removeAttribute('is-selected', 'selected');
@@ -61,7 +64,7 @@ const highlightCard = async (noteSection) => {
 
     // Loop and add event so start selection mood when ot turned on
     noteCards.forEach((card) => {
-        /*_*_*  == Currently I can't event is working 😹 ==  *_*_*/
+        /*_*_*  == Currently I can't event why this function is working 😹 ==  *_*_*/
         card.addEventListener('dblclick', (e) => {    
             cardSelectionMood = true; // Activate selection mood 
 
@@ -119,11 +122,11 @@ function selectAllCard(noteSection, noteCards, selectAllBtn) {
                 
                 // Check and asign appropraite values
                 if (!cardCheckbox.classList.contains('checked')) {
-                    cardCheckbox.innerHTML = 'S';
+                    cardCheckbox.innerHTML = `${checkboxSVG}`;
                     cardCheckbox.classList.add('checked');
                     currentTarget.setAttribute('is-selected', 'selected');  
                 } else if (cardCheckbox.classList.contains('checked')) {
-                    cardCheckbox.innerHTML = 'C';
+                    cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
                     cardCheckbox.classList.remove('checked');
                     currentTarget.removeAttribute('is-selected', 'selected');
                 }
@@ -152,11 +155,11 @@ const selectAndCheckCard = (e) => {
 
     // Check and asign appropraite values
     if (!cardCheckbox.classList.contains('checked')) {
-        cardCheckbox.innerHTML = 'S';
+        cardCheckbox.innerHTML = `${checkboxSVG}`;
         cardCheckbox.classList.add('checked');
         currentTarget.setAttribute('is-selected', 'selected');  
     } else if (cardCheckbox.classList.contains('checked')) {
-        cardCheckbox.innerHTML = 'C';
+        cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
         cardCheckbox.classList.remove('checked');
         currentTarget.removeAttribute('is-selected', 'selected');
     }

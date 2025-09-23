@@ -76,6 +76,26 @@ const editProfilePencilSvg = `
     </svg>
 `;
 
+const checkboxSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+        <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5z"/>
+        <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0"/>
+    </svg>
+`;
+
+const unchecBoxkSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-app" viewBox="0 0 16 16">
+        <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4z"/>
+    </svg>
+`;
+
+const personProfileSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+    </svg>
+`;
+
 export {
     homeSvg,
     CheckAllSvg,
@@ -88,5 +108,8 @@ export {
     refreshSvg,
     exitSvg,
     pencilSvg,
-    editProfilePencilSvg
+    editProfilePencilSvg,
+    checkboxSVG,
+    unchecBoxkSVG,
+    personProfileSVG
 };
