@@ -14,7 +14,6 @@ import { getNoteData } from '../../service/notesService.js';
 import handleAddNotes from '../events/handleAddNotes.js';
 import getLocalStorageNoteData from '../../service/localSorageData.js';
 import renderNote from '../utils/renderNotes.js';
-import { getNoteSection } from '../helpers/saveNote.js';
 
 const NoteSection = async () => {
     // Create element
@@ -40,8 +39,6 @@ const NoteSection = async () => {
             console.warn('NoteSection render notes card ', renderCount, ' times');
         }) () : renderNote([], noteSection, 3);
 
-    
-    getNoteSection(noteSection);
         calledStateOnce = false;
     noNotes = true;
     // Return noteSection
