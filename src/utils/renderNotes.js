@@ -1,4 +1,5 @@
 import handleAddNotes from '../events/handleAddNotes.js';
+import highlightCard from '../events/selectCard.js';
 import EmptyState from '../fragments/EmptyState.js';
 import Note from '../fragments/NoteCard.js';
 
@@ -44,6 +45,7 @@ const renderNote = async (noteData, noteSection=[], noteStateValue=0) => {
     }
 
     console.log("Note section state: ", initialNoteSectionState);
+    highlightCard(noteSection);
 }
 
 export default renderNote;

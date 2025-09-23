@@ -34,9 +34,10 @@ const navigateHome  = (event) => {
     const { titleInput, noteTextArea } = selectElements();
 
     // Only save notes when title or note content is typed
-    if (titleInput.ariaValueMax.trim() || noteTextArea.ariaValueMax.trim()) {
+    if (titleInput.value.trim() || noteTextArea.value.trim()) {
         // Save notes if content are added to input or textarea
-        saveNote(event);  
+        saveNote(event); 
+        console.warn('Note saved called from navigate ome function!');
     }
 }
 

@@ -34,7 +34,7 @@ const selectBehaviour = (noteSection, cardSelectionMood) => {
 }
 
 // Highligt all notes
-const highlightCard = async (main, noteSection) => {
+const highlightCard = async (noteSection) => {
     // Select element from DOM
     const selectActionBtn = document.querySelector('#select-action-button'); 
     const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
