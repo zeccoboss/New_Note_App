@@ -8,7 +8,7 @@ const getLocalStorageNoteData = async () => {
         const data = await localStorageNoteData;
         return data
     } catch (e) {
-        console.error(e);
+        console.warn(e);
         return [];
     }
 }

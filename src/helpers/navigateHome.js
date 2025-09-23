@@ -31,9 +31,13 @@ const navigateHome  = (event) => {
 
     // Call to display all hidden buuttons
     showButtons();
+    const { titleInput, noteTextArea } = selectElements();
 
-    // Save notes if content are added to input or textarea
-    saveNote(event);
+    // Only save notes when title or note content is typed
+    if (titleInput.ariaValueMax.trim() || noteTextArea.ariaValueMax.trim()) {
+        // Save notes if content are added to input or textarea
+        saveNote(event);  
+    }
 }
 
 export default navigateHome;

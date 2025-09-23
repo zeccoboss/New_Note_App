@@ -14,8 +14,8 @@ function sendDataToLocalStorage(newData) {
     localStorage.setItem('zecco_note_app', JSON.stringify(newData));
 }
 
-// 
-const updatedNoteData = async (savedNoteData, idValue, title, note, currentTime) => {
+// When called updates notes with te given parameters
+const updatedNoteData = (savedNoteData, idValue, title, note, currentTime) => {
     // Tweak data to be save since title is not passed
     let newNoteData = {
         id: idValue,
@@ -24,6 +24,7 @@ const updatedNoteData = async (savedNoteData, idValue, title, note, currentTime)
         date: currentTime
     }
 
+    // Destruct the saved data and add the new data then store in local storage and return the updated value
     const updatedDataArray = [...savedNoteData, newNoteData];
     sendDataToLocalStorage(updatedDataArray);
     return updatedDataArray;
@@ -37,12 +38,15 @@ const saveNote = async (e) => {
     const noteSection = document.querySelector('.note_section');
 
     // Get required data for new Note
-    const { titleInput, noteTextArea } = selectElements();
-    const getRandomCharacters = randomCharGenerator(6);
-    const { currentTime } = NoteForm();
+    const { titleInput, noteTextArea } = selectElements(); // Get input and textarea
+    const getRandomCharacters = randomCharGenerator(6); // Get random characters to generate unique ID'S for each stored note
+    const { currentTime } = NoteForm(); // Get time values from Note form
 
+    // Collect data from local storage
     const savedNoteData = await getLocalStorageNoteData();
-    // localStorage.removeItem('zecco_note_app');
+
+    // Clear the data from local storage so it does not  get overidden
+    localStorage.removeItem('zecco_note_app');
 
     // Format input and textarea values
     let title = titleInput.value.trim();
@@ -51,39 +55,40 @@ const saveNote = async (e) => {
     // Check Conditions and save appropraite data
     if (!title && !note) {
         console.warn('Note content not specified by user');
+        // Call render function when no data specified and return array, null and 3 for error handling
         renderNote([], null, 3);
         return; 
     } else if (title && note) {
         console.log('All note content is specified by user');   
+        // Get note section from current scope so valid element can be sent to render notes function
+        const noteSection = document.querySelector('.note_section');
 
-        let updatedData = updatedNoteData(savedNoteData, getRandomCharacters, title, note, currentTime);
+        // Call the update note function and collect the returned values and update the DOM then all to local storage
+        let updatedData = await updatedNoteData(savedNoteData, getRandomCharacters, title, note, currentTime);
 
-        console.log(noteSection);
-        
         // render the note section
         renderNote(updatedData, noteSection, 2);
     } else if (!title && note) {
         console.warn('Note content not specified by user');
+        // Get note section from current scope so valid element can be sent to render notes function
+        const noteSection = document.querySelector('.note_section');
 
-        let updatedData =  updatedNoteData(savedNoteData, getRandomCharacters, 'No title specified', note, currentTime);
-
-        console.log(noteSection);
+        // Call the update note function and collect the returned values and update the DOM then all to local storage
+        let updatedData = await  updatedNoteData(savedNoteData, getRandomCharacters, 'No title specified', note, currentTime);
 
         // render the note section
         renderNote(updatedData, noteSection, 2);
-    } else {
+    } else if (title && !note) {
         console.warn('Note content not specified by user');
-
-        let updatedData =  updatedNoteData(savedNoteData, getRandomCharacters, title, 'Note content not specified!', currentTime);
-
-                console.log(noteSection);
+        // Call the update note function and collect the returned values and update the DOM then all to local storage
+        let updatedData = await  updatedNoteData(savedNoteData, getRandomCharacters, title, 'Note content not specified!', currentTime);
         // render the note section
         renderNote(updatedData, noteSection, 2);
     }
 
+    // Clear input and textarea after all operation is complete
     titleInput.value = '';
     noteTextArea.value = '';
 }
-
 
 export default saveNote;

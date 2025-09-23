@@ -7,16 +7,14 @@ import SetElementAttributes from '../utils/SetElementAttributes.js';
 // Keep initial state of app
 // let initialNoteSectionState = 0; 
 let calledStateOnce = true;
-
+let renderCount = 0;
 
 // Import service handler 
 import { getNoteData } from '../../service/notesService.js';
 import handleAddNotes from '../events/handleAddNotes.js';
 import getLocalStorageNoteData from '../../service/localSorageData.js';
 import renderNote from '../utils/renderNotes.js';
-
-const trackSelectonMood = () => { openedSelection < 1 ? openedSelection++ : openedSelection = 0; }// Add 1 if value is 0
-
+import { getNoteSection } from '../helpers/saveNote.js';
 
 const NoteSection = async () => {
     // Create element
@@ -35,14 +33,16 @@ const NoteSection = async () => {
     // Declare to keep track of notes
     let noNotes = true;
 
-    calledStateOnce && localNoteData.length !== 0 ? (() => {
-        renderNote(localNoteData, noteSection, 1);
-            console.warn('Note section of id 0 sent data to render function');
-            // console.log('Section note data: ', localNoteData);
+    calledStateOnce && localNoteData.length !== 0 ?
+        (() => {
+            renderCount++;
+            renderNote(localNoteData, noteSection, 1);
+            console.warn('NoteSection render notes card ', renderCount, ' times');
         }) () : renderNote([], noteSection, 3);
 
+    
+    getNoteSection(noteSection);
         calledStateOnce = false;
-
     noNotes = true;
     // Return noteSection
     return { noteSection, noNotes };
