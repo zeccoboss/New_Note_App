@@ -3,7 +3,17 @@ import hideButtons from "../helpers/hideButtons.js";
 
 const editNote = async (noteSection) => {
     const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-    const storedData = await getLocalStorageNoteData();
+
+    //
+    noteCards.forEach(card => {
+        card.addEventListener('click', async (e) => {
+                const storedData = await getLocalStorageNoteData();
+
+            // console.log(e.target);
+            let cardId = e.currentTarget.id;
+            let foundData = storedData.find(data => data.id === cardId);
+            console.log(foundData);
+
 
     // Select element from DOM
     const returnBtn = document.querySelector('.return_button');
@@ -13,17 +23,6 @@ const editNote = async (noteSection) => {
     const noteTextArea = formSection.querySelector('.note_textarea'); 
     const timeElement = formSection.querySelector('.form_time_element');
 
-
-    console.log(returnBtn);
-    
-
-    //
-    noteCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            // console.log(e.target);
-            let cardId = e.currentTarget.id;
-            let foundData = storedData.find(data => data.id === cardId);
-            console.log(foundData);
             
             // 
             formSection.classList.add('active_section');
@@ -40,8 +39,6 @@ const editNote = async (noteSection) => {
             hideButtons();
         });
     });
-
-    console.log(noteCards);
 }
 
 export default editNote;

@@ -1,3 +1,4 @@
+import editNote from '../events/editNote.js';
 import highlightCard from '../events/selectCard.js';
 import EmptySearchResultContainer from '../fragments/EmptySearchResultContainer.js';
 import EmptyState from '../fragments/EmptyState.js';
@@ -40,7 +41,7 @@ const renderNote = async (noteData, noteSection, noteStateValue) => {
         initialNoteSectionState = 2;
     } else if ( noteStateValue === 3 && noteData.length === 0 ) {
         //
-        initialNoteSectionState = 3;
+        initialNoteSectionState = 0;
     } else if (noteStateValue === 4 && noteData.length === 0 ) {
         initialNoteSectionState = 4;
     }
@@ -71,19 +72,28 @@ const renderNote = async (noteData, noteSection, noteStateValue) => {
         noteData.forEach(note => {
             noteSection.append(Note({ ...note }));
         });
-        return;
-    } else if (initialNoteSectionState === 2) {
+
+        // Edit note
+        editNote(noteSection);
+        
+        // Function for highlighting notes
+        highlightCard(noteSection);    } else if (initialNoteSectionState === 2) {
         noteData.forEach(note => {
             console.log(note);
             noteSection.append(Note({ ...note }));
         });
+
+        // Edit note
+        editNote(noteSection);
+
+        // Function for highlighting notes
+        highlightCard(noteSection);
     } else if (initialNoteSectionState === 4) {
         // EmptyState(noteSection);
         EmptySearchResultContainer(noteSection);
     }
 
     console.log("Note section state: ", initialNoteSectionState);
-    highlightCard(noteSection);
 }
 
 export default renderNote;

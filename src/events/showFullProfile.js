@@ -9,6 +9,8 @@ function showFullProfile(e) {
         settingsForm.classList.remove('show_settings_form');
     }
 
+    
+
     // Toggle classes for accesibility
     profileCard.classList.toggle('full_profile_card');
     dropDownRightAngleSvg.classList.toggle('rotate_drop_down_svg');
