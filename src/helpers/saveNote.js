@@ -45,9 +45,6 @@ const saveNote = async (e) => {
     // Collect data from local storage
     const savedNoteData = await getLocalStorageNoteData();
 
-    // Clear the data from local storage so it does not  get overidden
-    localStorage.removeItem('zecco_note_app');
-
     // Format input and textarea values
     let title = titleInput.value.trim();
     let note = noteTextArea.value.trim();
@@ -55,6 +52,8 @@ const saveNote = async (e) => {
     // Check Conditions and save appropraite data
     if (!title && !note) {
         console.warn('Note content not specified by user');
+        console.log('');
+        
         // Get note section from current scope so valid element can be sent to render notes function
         const noteSection = document.querySelector('.note_section');
 
@@ -63,28 +62,37 @@ const saveNote = async (e) => {
         return; 
     } else if (title && note) {
         console.log('All note content is specified by user');   
+        console.log('');
+        
         // Get note section from current scope so valid element can be sent to render notes function
         const noteSection = document.querySelector('.note_section');
 
         // Call the update note function and collect the returned values and update the DOM then all to local storage
-        let updatedData = await updatedNoteData(savedNoteData, getRandomCharacters, title, note, currentTime);
+        let updatedData = updatedNoteData(savedNoteData, getRandomCharacters, title, note, currentTime);
+
+        console.log('Why u tripping...');
+        
 
         // render the note section
         renderNote(updatedData, noteSection, 2);
     } else if (!title && note) {
-        console.warn('Note content not specified by user');
+        console.warn('Note title not specified by user');
+        console.log('');
+
         // Get note section from current scope so valid element can be sent to render notes function
         const noteSection = document.querySelector('.note_section');
 
         // Call the update note function and collect the returned values and update the DOM then all to local storage
-        let updatedData = await  updatedNoteData(savedNoteData, getRandomCharacters, 'No title specified', note, currentTime);
+        let updatedData =  updatedNoteData(savedNoteData, getRandomCharacters, 'No title specified', note, currentTime);        
 
         // render the note section
         renderNote(updatedData, noteSection, 2);
     } else if (title && !note) {
-        console.warn('Note content not specified by user');
+        console.warn('Note data not specified by user');
+        console.log('');
+
         // Call the update note function and collect the returned values and update the DOM then all to local storage
-        let updatedData = await  updatedNoteData(savedNoteData, getRandomCharacters, title, 'Note content not specified!', currentTime);
+        let updatedData =  updatedNoteData(savedNoteData, getRandomCharacters, title, 'Note content not specified!', currentTime);
         // render the note section
         renderNote(updatedData, noteSection, 2);
     }

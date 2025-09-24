@@ -14,6 +14,8 @@ import { getNoteData } from '../../service/notesService.js';
 import handleAddNotes from '../events/handleAddNotes.js';
 import getLocalStorageNoteData from '../../service/localSorageData.js';
 import renderNote from '../utils/renderNotes.js';
+import searchNotes from '../events/searchNotes.js';
+import editNote from '../events/editNote.js';
 
 const NoteSection = async () => {
     // Create element
@@ -41,6 +43,13 @@ const NoteSection = async () => {
 
         calledStateOnce = false;
     noNotes = true;
+
+    // Search notes
+    searchNotes(noteSection);
+
+    // Edit note
+    editNote(noteSection);
+
     // Return noteSection
     return { noteSection, noNotes };
 }

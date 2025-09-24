@@ -9,6 +9,29 @@ let selectionCount = 0;
 // Track selectoion mood function
 const trackSelectonMood = () => { openedSelection < 1 ? openedSelection++ : openedSelection = 0; }// Add 1 if value is 0
 
+const holdToSelectCard = (currentTarget) => {
+    cardSelectionMood = true; // Activate selection mood 
+                    
+    const noteSection = currentTarget.parentNode;
+    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
+    const cardCheckboxs = noteCards.map(fiteredCard => fiteredCard.querySelector('.note_checkbox_btn'));
+
+    trackSelectonMood(); // Track selectoion mood 
+
+    // Loop through check button and notes card then add class to hightlight
+    cardCheckboxs.forEach(btn => {
+        btn.classList.toggle('show_note_checkbox_btn'); // Add class to display to check button
+    });
+
+    noteCards.forEach(card => {
+        card.classList.toggle('highlight_note_card'); // Add class to highlight all cads
+    });
+
+    // Call to add behaviour 
+    selectBehaviour(noteSection, cardSelectionMood);
+    selectAndCheckCardById(currentTarget.id); // Call and pass the id to match function parameter and get current clicked card
+}
+
 // Select be haviour
 const selectBehaviour = (noteSection, cardSelectionMood) => {
     const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
@@ -49,6 +72,9 @@ const highlightCard = async (noteSection) => {
         cardSelectionMood = true;
         trackSelectonMood(); // Track selectoion mood 
 
+        // call select behaviour function
+        selectBehaviour(noteSection, cardSelectionMood);
+
         // Ceck selection mood if on loop troug cards and add class to igtligt
         if (cardSelectionMood) {
             noteCards.forEach(noteCard => {
@@ -56,40 +82,44 @@ const highlightCard = async (noteSection) => {
                 noteCard.classList.add('highlight_note_card');
                 cardCheckbox.classList.add('show_note_checkbox_btn');
             });
-        }
+            console.log(selectActionBtn.children[1]);
+            
 
-        // call select behaviour function
-        selectBehaviour(noteSection, cardSelectionMood);
+            selectActionBtn.innerHTML = 'Cancle';
+        } else {
+
+            selectActionBtn.innerHTML = 'Select';
+        }
     });
+
+    let clickedIntervalID;
 
     // Loop and add event so start selection mood when ot turned on
     noteCards.forEach((card) => {
-        /*_*_*  == Currently I can't event why this function is working 😹 ==  *_*_*/
-        card.addEventListener('dblclick', (e) => {    
-            cardSelectionMood = true; // Activate selection mood 
-
+        card.addEventListener('mousedown', (e) => {    
             // Get elements from DOM
-            let currentTarget = e.currentTarget;    
-            const noteSection = currentTarget.parentNode;
-            const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-            const cardCheckbox = currentTarget.querySelector('.note_checkbox_btn');
-            const cardCheckboxs = noteCards.map(fiteredCard => fiteredCard.querySelector('.note_checkbox_btn'));
-    
-            trackSelectonMood(); // Track selectoion mood 
+            let currentTarget = e.currentTarget;
 
-            
-            // Loop through check button and notes card then add class to hightlight
-            cardCheckboxs.forEach(btn => {
-                btn.classList.toggle('show_note_checkbox_btn'); // Add class to display to check button
-            });
+            clickedIntervalID = setTimeout((currentTarget) => {
+               holdToSelectCard(currentTarget); //
+            }, 400, currentTarget); 
+        });
 
-            noteCards.forEach(card => {
-                card.classList.toggle('highlight_note_card'); // Add class to highlight all cads
-            });
+        card.addEventListener('mouseup', (e) => {    
+            clearTimeout(clickedIntervalID);
+        });
+        
+        card.addEventListener('touchstart', (e) => {    
+            // Get elements from DOM
+            let currentTarget = e.currentTarget;
 
-            // Call to add behaviour 
-            selectBehaviour(noteSection, cardSelectionMood);
-            selectAndCheckCard(e); // Call and pass the event to match function parameter 
+            clickedIntervalID = setTimeout((currentTarget, e) => {
+               holdToSelectCard(currentTarget); //
+            }, 400, currentTarget); 
+        });
+
+        card.addEventListener('touchend', (e) => {    
+            clearTimeout(clickedIntervalID);
         });
     });
 
@@ -114,11 +144,6 @@ function selectAllCard(noteSection, noteCards, selectAllBtn) {
                 // Toggle class 
                 card.classList.toggle('highlight_note_card');
                 cardCheckbox.classList.toggle('show_note_checkbox_btn');
-
-                // // Set It's initial state so
-                // cardCheckbox.innerHTML = 'C';
-                // cardCheckbox.classList.remove('checked');
-                // currentTarget.removeAttribute('is-selected', 'selected');
                 
                 // Check and asign appropraite values
                 if (!cardCheckbox.classList.contains('checked')) {
@@ -149,9 +174,9 @@ function selectCard(noteSection, mood) {
 // Celect and disselect note card then add checked to the check button class
 const selectAndCheckCard = (e) => {
     let currentTarget = e.currentTarget;    
-    const noteSection = currentTarget.parentNode;
-    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-    const cardCheckbox = currentTarget.querySelector('.note_checkbox_btn');
+
+    // const noteCards = await Array.from(noteSection.getElementsByClassName('note_card'));
+    const cardCheckbox = e.currentTarget.querySelector('.note_checkbox_btn');
 
     // Check and asign appropraite values
     if (!cardCheckbox.classList.contains('checked')) {
@@ -162,6 +187,29 @@ const selectAndCheckCard = (e) => {
         cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
         cardCheckbox.classList.remove('checked');
         currentTarget.removeAttribute('is-selected', 'selected');
+    }
+}
+
+// Celect and disselect note card then add checked to the check button class
+const selectAndCheckCardById = async (id) => {
+    try {
+        let currentTarget = document.getElementById(`${id}`);    
+
+        // const noteCards = await Array.from(noteSection.getElementsByClassName('note_card'));
+        const cardCheckbox = currentTarget.querySelector('.note_checkbox_btn');
+
+        // Check and asign appropraite values
+        if (!cardCheckbox.classList.contains('checked')) {
+            cardCheckbox.innerHTML = `${checkboxSVG}`;
+            cardCheckbox.classList.add('checked');
+            currentTarget.setAttribute('is-selected', 'selected');  
+        } else if (cardCheckbox.classList.contains('checked')) {
+            cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
+            cardCheckbox.classList.remove('checked');
+            currentTarget.removeAttribute('is-selected', 'selected');
+        }
+    } catch (error) {
+        console.warn(error);
     }
 }
 

@@ -43,6 +43,10 @@
 
 	/* Border Radius */
 	--RADIUS: 0.2rem;
+
+	--PROFILE-CARD-BTN-COLOR: hsl(0, 47%, 96%);
+	--PROFILE-CARD-BTN-BG: hsl(0, 0%, 27%);
+
 }
 
 .button {
@@ -224,7 +228,7 @@ body {
 
 .svg_pencil {
   	fill: hsl(150, 92%, 52%);
-	filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
+	filter: drop-shadow(0px 0px 10px hsl(0, 0%, 100%));
 	transform: rotate(-20deg);
 }
 
@@ -337,7 +341,7 @@ body {
 .note_card {
 	box-shadow: 0px 0px 2px var(--CARD-SHADOW);
 	margin: 0.3rem;
-	padding: 0.7rem var(--PADDING);
+	padding: 0.7rem var(--PADDING) 0.7rem 1rem;
 	border-radius: 0.6rem;
 	color: var(--CARD-COLOR);
 	cursor: pointer;
@@ -356,8 +360,16 @@ body {
 	background-color: hsla(249, 100%, 4%, 0.041);
 	margin-top: 0.2rem;
 	color: rgb(0, 37, 107);
-	box-shadow: 0px 0px 6px rgba(12, 22, 12, 0.411);
-	animation: shake_note_card 0.5s infinite forwards;
+	box-shadow: 0px 0px 6px hsla(120, 29%, 7%, 0.158);
+	animation: shake_note_card 0.7s linear infinite forwards;
+}
+
+.checkbox_svg {
+	fill: hsl(0, 0%, 2%);
+}
+
+.uncheckbox_svg {
+	fill: hsl(0, 0%, 94%);
 }
 
 @keyframes shake_note_card  {
@@ -381,7 +393,7 @@ body {
 
 .highlight_note_card:hover {
 	background-color: hsla(249, 100%, 10%, 0.041);
-	color: rgb(0, 37, 107);
+	color: hsl(219, 100%, 21%);
 	transform: unset;
 }
 
@@ -391,12 +403,12 @@ body {
 	top: 10px;
 	width: 2rem;
 	height: 2rem;
-	background: rgb(60, 55, 139);
+	background: hsl(244, 43%, 38%);
 	visibility: hidden;
 	opacity: 0;
 	transition: var(--TRANSITION);
 	border: none;
-	color: aliceblue;
+	color: hsl(208, 100%, 97%);
 	border-radius: 1rem;
 	display: flex;
 	justify-content: center;
@@ -406,8 +418,8 @@ body {
 }
 
 .note_checkbox_btn:hover {
-	color: rgba(255, 255, 255, 0.192);
-	color: rgb(207, 207, 207);
+	color: hsla(0, 0%, 100%, 0.192);
+	color: hsl(0, 0%, 81%);
 }
 
 .show_note_checkbox_btn {
@@ -416,8 +428,8 @@ body {
 }
 
 .checked {
-	color: rgb(17, 17, 17);
-	background-color: rgb(9, 255, 0);
+	color: hsl(0, 0%, 7%);
+	background-color: hsl(118, 100%, 50%);
 }
 
 .note_content,
@@ -450,6 +462,12 @@ body {
 .create_note_button:hover {
 	transform: translateY(-3px);
 	color: hsla(133, 0%, 84%, 1);
+}
+
+.empty_search_container {
+	display: flex;
+	justify-content: center;
+	padding-top: 1rem;
 }
 
 /* *_*_*_*_*_*_*_*_*_*_*_*_*_*_* */
@@ -588,10 +606,17 @@ body {
 
 .drop_profile_card_btn {
 	border-color: transparent;
+	background-color: var(--PROFILE-CARD-BTN-BG);
+	color: var(--PROFILE-CARD-BTN-COLOR);
+	transition: var(--TRANSITION);
 }
 
+.drop_profile_card_btn:hover {
+	opacity: 0.8;
+	transform: translateX(-2px);
+}
 .drop_down_right_angle_svg {
-	fill: hsl(0, 0%, 0%);
+	fill: hsl(0, 0%, 99%);
 }
 
 /* Rotate Drop Down SVG */
@@ -620,6 +645,14 @@ body {
 	gap: 0.5rem;
 	border-color: transparent;
 	box-shadow: 0px 0px 5px var(--ACCENT-SHADOW);
+	background-color: var(--PROFILE-CARD-BTN-BG);
+	color: var(--PROFILE-CARD-BTN-COLOR);
+	transition: var(--TRANSITION);
+}
+
+.edit_profile_card_btn:hover {
+	opacity: 0.8;
+	transform: translateY(-2px);
 }
 
 .edit_profile_pencil_svg {
@@ -637,16 +670,42 @@ body {
 }
 
 .show_settings_form {
-	height: 20rem;
-	margin: 1rem 0;
-	padding: calc(var(--PADDING) + 0.3rem) var(--PADDING);
+	height: 25rem;
+	margin: 1rem 1.5rem;
+	padding: 1rem;
 	overflow: unset;
 	opacity: 1;
+	animation: shake_settings_form 0.3s ease-in 0 1 forwards;
+}
+
+@keyframes shake_settings_form {
+	0% {
+		transform: translateX(0);
+	}
+
+	25% {
+		transform: translateX(-5px);
+		transform: scale(0.7);
+	}
+
+	75% {
+		transform: translateX(5px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.show_settings_form:hover {
+	transition: var(--TRANSITION);
+	transform: translateY(-2px);
 }
 
 .settings_form_heading {
 	font-weight: 500;
 	text-align: center;
+	margin: 1.2rem 0 1rem 0;
 }
 
 .settings_form_input,
@@ -657,11 +716,8 @@ body {
 	border: none;
 	outline: none;
 	box-shadow: 0px 0px 2px gray;
-	box-shadow: 0px 0px 5px var(--ACCENT-SHADOW);
+	background-color: rgba(255, 255, 224, 0);
 }
-/* 
-.settings_form_input {
-} */
 
 .hobbies_textarea {
 	min-height: 3rem;
@@ -680,15 +736,11 @@ body {
 	cursor: pointer;
 	border-radius: var(--RADIUS);
 	border: none;
-	/* box-shadow: 0px 0px 2px rgb(63, 63, 63); */
 	box-shadow: 0px 0px 5px var(--ACCENT-SHADOW);
-	background-color: var(--ACCENT-SHADOW);
-
+	background-color: var(--PROFILE-CARD-BTN-BG);
+	color: var(--PROFILE-CARD-BTN-COLOR);
 }
 
-.settings_form_submit_btn {
-	counter-reset: 2;
-}
 
 /* Settings --> Theme */
 .theme_card {
@@ -711,6 +763,14 @@ body {
 	border-radius: 0.5rem;
 	padding: var(--PADDING);
 	cursor: pointer;
+	background-color: var(--PROFILE-CARD-BTN-BG);
+	color: var(--PROFILE-CARD-BTN-COLOR);
+	transition: var(--TRANSITION);
+}
+
+.theme_list_toggler:hover {
+	opacity: 0.8;
+	transform: translateX(-2px);
 }
 
 .theme_list_term {
@@ -972,7 +1032,15 @@ body {
 	color: rgba(0, 0, 0, 0.616);
 }
 
+.dark_theme .checkbox_svg {
+	fill: rgb(255, 255, 255);
+}
+
+.dark_theme .uncheckbox_svg {
+	fill: black;
+}
+
 .dark_theme .checked {
 	color: rgb(255, 255, 255);
-	background-color: rgb(0, 51, 3);
+	background-color: rgb(0, 156, 10);
 }
