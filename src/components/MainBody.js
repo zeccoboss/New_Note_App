@@ -9,7 +9,6 @@ import SetElementAttributes from '../utils/SetElementAttributes.js';
 
 // Import service handler 
 import { getNoteData } from '../../service/notesService.js';
-import highlightCard from '../events/selectCard.js';
 import selectElements from '../helpers/selectElements.js';
 
 const Main = async () => {
@@ -30,7 +29,6 @@ const Main = async () => {
 		
 	main.append(noteSection, SettingsSection(), FormSection(), TrashSection());
 	
-	highlightCard(main, noteSection);
 	selectElements(main, noteSection);
 	return main;
 }

@@ -1,4 +1,3 @@
-import editNote from '../events/editNote.js';
 import highlightCard from '../events/selectCard.js';
 import EmptySearchResultContainer from '../fragments/EmptySearchResultContainer.js';
 import EmptyState from '../fragments/EmptyState.js';
@@ -7,21 +6,26 @@ import Note from '../fragments/NoteCard.js';
 let initialNoteSectionState = 0;
 
 const renderNote = async (noteData, noteSection, noteStateValue) => {
-    //
+    // Select element from the DOM
+    const selectAllBtn = document.querySelector('#select-all-btn');
+    
+    // Check if note sectio n is passed to thi scope
     if (noteSection) {
+        // Clear note section and log a warning for debugging
         noteSection.innerHTML = '';
         console.warn('Note section cleared');
         console.log('');
     } else if (noteData === 0) {
         console.warn('Note data array is not iterable!');
     } else {
+        // log a warning when note section not available and stop execution to avoid breaking application
         console.warn('Can\'t find note section');
         return;
     }
 
     /*
         The initialNoteSectionState valuse are evaluated as follows
-        ____________________________________________________________________________________________________________________________
+        _______________________________________________________________________________________________
        
         0. There's no data to render .
         1. The initial rendering of found notes data when page first loads.
@@ -31,8 +35,7 @@ const renderNote = async (noteData, noteSection, noteStateValue) => {
 
     */
 
-    console.log('passed value:', noteStateValue);
-
+    // Check passed state value and note data length to manage App State consistently
     if (noteStateValue === 1 && noteData.length > 0) {
         //
         initialNoteSectionState = 1
@@ -46,54 +49,36 @@ const renderNote = async (noteData, noteSection, noteStateValue) => {
         initialNoteSectionState = 4;
     }
 
-    // initialNoteSectionState = noteStateValue === 1 && noteData.length > 0  ? 1 : 0; // 
-    // console.log('state value', initialNoteSectionState);
-
-    // initialNoteSectionState = noteStateValue === 2 && noteData.length > 0 ? 2 : 1; // 
-    // console.log('state value', initialNoteSectionState);
-
-    // initialNoteSectionState = noteStateValue === 3 && noteData.length === 0  ? 0 : 1; //
-    // console.log('state value', initialNoteSectionState);
-    
-    
-    // initialNoteSectionState = noteStateValue === 4 && noteData.length === 0 ? 4 : 1;
-
-    console.log('');
-    console.log('passed value:', noteStateValue);
-    console.log('data length:', noteData.length);
-    console.log('state value:', initialNoteSectionState);
-    
-
-        
+    // console.log('');
+    // console.log('passed value:', noteStateValue);
+    // console.log('data length:', noteData.length);
+    // console.log('state value:', initialNoteSectionState);
 
     if (initialNoteSectionState === 0) {
         EmptyState(noteSection);
+        selectAllBtn.disabled = true;
     } else if (initialNoteSectionState === 1) {
         noteData.forEach(note => {
             noteSection.append(Note({ ...note }));
         });
 
-        // Edit note
-        editNote(noteSection);
-        
-        // Function for highlighting notes
-        highlightCard(noteSection);    } else if (initialNoteSectionState === 2) {
+        highlightCard(noteSection);
+    } else if (initialNoteSectionState === 2) {
         noteData.forEach(note => {
-            console.log(note);
             noteSection.append(Note({ ...note }));
         });
 
-        // Edit note
-        editNote(noteSection);
-
-        // Function for highlighting notes
+        selectAllBtn.disabled = false
         highlightCard(noteSection);
+    return
     } else if (initialNoteSectionState === 4) {
         // EmptyState(noteSection);
         EmptySearchResultContainer(noteSection);
     }
 
     console.log("Note section state: ", initialNoteSectionState);
+    console.log(selectAllBtn);
+    
 }
 
 export default renderNote;

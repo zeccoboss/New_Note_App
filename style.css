@@ -340,7 +340,7 @@ body {
  
 .note_card {
 	box-shadow: 0px 0px 2px var(--CARD-SHADOW);
-	margin: 0.3rem;
+	margin: 0.2rem var(--MARGIN);
 	padding: 0.7rem var(--PADDING) 0.7rem 1rem;
 	border-radius: 0.6rem;
 	color: var(--CARD-COLOR);
@@ -853,11 +853,6 @@ body {
 
 .note_title_input::placeholder,
 .note_textarea::placeholder {
-	color: aliceblue;
-}
-
-.note_title_input::placeholder,
-.note_textarea::placeholder {
 	color: gray;
 }
 
@@ -875,10 +870,13 @@ body {
 	bottom: 2rem;
 	right: 2rem;
 	background-color: hsla(0, 0%, 0%, 0.4);
-	padding: var(--SAVE-B-PADDING);
+	/* padding: var(--SAVE-B-PADDING); */
+	width: 2rem;
+	height: 2rem;
 	box-shadow: unset;
 	box-shadow: 0px 0px 5px hsla(0, 100%, 4%, 1);
-	animation: beat 3s infinite both linear;
+	/* animation: beat 3s infinite both linear; */
+	border-radius: 1rem;
 }
 
 /* Form --> Save Button Animation */
@@ -969,10 +967,9 @@ body {
 .dark_theme .settings_form_input,
 .dark_theme button{
 	color: var(--DARKTHEME-COLOR);
-	background-color: transparent;
 	box-shadow: 0px 0px 8px var(--ACCENT-SHADOW);
-	background-color: transparent;
-	border: 1px solid rgb(163, 163, 163);
+	background-color: hsla(0, 0%, 100%, 0.082);
+	border: 1px solid hsla(0, 0%, 100%, 0.753);
 }
 
 .dark_theme .search_input:current {

@@ -6,8 +6,6 @@ import saveNote from "./saveNote.js";
 // Import helpers
 import showButtons from "./showButtons.js";
 
-
-
 const navigateHome  = (event) => {
     // Destruct and get elements from the selectElements fintion
     const sections = Array.from(main.querySelectorAll('.section'));

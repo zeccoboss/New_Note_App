@@ -1,6 +1,14 @@
 const localStorageNoteData = new Promise((resolve, reject) => {
-    let savedNotes = JSON.parse(localStorage.getItem("zecco_note_app")) || null;
-    savedNotes ? resolve(savedNotes) : reject('Can\'t find the local storage Note Data');
+    try {
+        let savedNotes = JSON.parse(localStorage.getItem("zecco_note_app")) || null;
+        
+        // 
+        savedNotes ? 
+            resolve(savedNotes) :
+            reject('Can\'t find the local storage Note Data');
+    } catch (error) {
+        resolve(error);
+    }
 });
 
 const getLocalStorageNoteData = async () => {

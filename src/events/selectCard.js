@@ -1,5 +1,6 @@
 // Import SVG's
 import {checkboxSVG, unchecBoxkSVG } from "../assets/svg/svg-icons.js";
+import editNote from "./editNote.js";
 
 // Declare global variabls for state tracking
 let cardSelectionMood = false;
@@ -8,56 +9,6 @@ let selectionCount = 0;
 
 // Track selectoion mood function
 const trackSelectonMood = () => { openedSelection < 1 ? openedSelection++ : openedSelection = 0; }// Add 1 if value is 0
-
-const holdToSelectCard = (currentTarget) => {
-    cardSelectionMood = true; // Activate selection mood 
-                    
-    const noteSection = currentTarget.parentNode;
-    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-    const cardCheckboxs = noteCards.map(fiteredCard => fiteredCard.querySelector('.note_checkbox_btn'));
-
-    trackSelectonMood(); // Track selectoion mood 
-
-    // Loop through check button and notes card then add class to hightlight
-    cardCheckboxs.forEach(btn => {
-        btn.classList.toggle('show_note_checkbox_btn'); // Add class to display to check button
-    });
-
-    noteCards.forEach(card => {
-        card.classList.toggle('highlight_note_card'); // Add class to highlight all cads
-    });
-
-    // Call to add behaviour 
-    selectBehaviour(noteSection, cardSelectionMood);
-    selectAndCheckCardById(currentTarget.id); // Call and pass the id to match function parameter and get current clicked card
-}
-
-// Select be haviour
-const selectBehaviour = (noteSection, cardSelectionMood) => {
-    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-    
-    // Select card beavour
-    if (openedSelection === 0) {
-        noteCards.forEach(card => {
-            const cardCheckbox = card.querySelector('.note_checkbox_btn'); 
-
-			// Reset add innerHTML and attributes
-            cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
-            cardCheckbox.classList.remove('show_note_checkbox_btn');
-            cardCheckbox.classList.remove('checked');
-            card.removeAttribute('is-selected', 'selected');
-        });
-
-        cardSelectionMood = false;
-        selectCard(noteSection, cardSelectionMood);
-        console.log('Selection Mood Off...', openedSelection);
-    } else if (openedSelection === 1) {
-        
-        cardSelectionMood = true;
-        selectCard(noteSection, cardSelectionMood);
-        console.log('Selection Mood On...', openedSelection);
-    }
-}
 
 // Highligt all notes
 const highlightCard = async (noteSection) => {
@@ -96,42 +47,60 @@ const highlightCard = async (noteSection) => {
 
     // Loop and add event so start selection mood when ot turned on
     noteCards.forEach((card) => {
+        // On computers
         card.addEventListener('mousedown', (e) => {    
             // Get elements from DOM
             let currentTarget = e.currentTarget;
 
             clickedIntervalID = setTimeout((currentTarget) => {
                holdToSelectCard(currentTarget); //
-            }, 400, currentTarget); 
+            }, 500, currentTarget);
         });
 
         card.addEventListener('mouseup', (e) => {    
+            // Clear interval when the time passed not completed
             clearTimeout(clickedIntervalID);
+
+            // When notes note highlighted edit note instead
+            editNote(noteSection);
         });
         
+        // For mobile device
         card.addEventListener('touchstart', (e) => {    
             // Get elements from DOM
             let currentTarget = e.currentTarget;
 
             clickedIntervalID = setTimeout((currentTarget, e) => {
                holdToSelectCard(currentTarget); //
-            }, 400, currentTarget); 
+            }, 500, currentTarget); 
         });
 
+        // For mobile device
         card.addEventListener('touchend', (e) => {    
+            // Clear interval when the time passed not completed
             clearTimeout(clickedIntervalID);
+
+            // When notes note highlighted edit note instead
+            editNote(noteSection);
         });
     });
 
     // Call to keek select all note card functon on wait
     selectAllCard(noteSection, noteCards, selectAllBtn);
+    console.log('..................');
+    
 }
 
 // Function to select all note card
 function selectAllCard(noteSection, noteCards, selectAllBtn) {
+    // Turn on selection mood for state tracking
+    cardSelectionMood = true;
+
+    console.log(cardSelectionMood);
+    
     // Check if selection moode is on then add event listner
-    cardSelectionMood ?
-        null : selectAllBtn.addEventListener('click', (e) => {
+    cardSelectionMood && selectAllBtn.disabled === false ?
+        selectAllBtn.addEventListener('click', (e) => {
             // Get the tag that triggared the event
             let currentTarget = e.currentTarget;
             noteCards.forEach(el => currentTarget.removeAttribute('is-selected', 'selected'));
@@ -159,20 +128,20 @@ function selectAllCard(noteSection, noteCards, selectAllBtn) {
 
             // call select behaviour function
             selectBehaviour(noteSection, cardSelectionMood);
-        });
+        }) : null;
 }
- 
+
 // Function to select all note card
 function selectCard(noteSection, mood) {
     const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
     
     // Check if selection moode is on then add event listner
-    mood ? noteCards.forEach(card => { card.addEventListener('click', selectAndCheckCard)})
-        : noteCards.forEach(card => { card.removeEventListener('click', selectAndCheckCard)});
+    mood ? noteCards.forEach(card => { card.addEventListener('click', selectAndCheckCardLogic)})
+        : noteCards.forEach(card => { card.removeEventListener('click', selectAndCheckCardLogic)});
 }
 
 // Celect and disselect note card then add checked to the check button class
-const selectAndCheckCard = (e) => {
+const selectAndCheckCardLogic = (e) => {
     let currentTarget = e.currentTarget;    
 
     // const noteCards = await Array.from(noteSection.getElementsByClassName('note_card'));
@@ -188,6 +157,30 @@ const selectAndCheckCard = (e) => {
         cardCheckbox.classList.remove('checked');
         currentTarget.removeAttribute('is-selected', 'selected');
     }
+}
+
+// 
+const holdToSelectCard = (currentTarget) => {
+    cardSelectionMood = true; // ON
+                    
+    const noteSection = currentTarget.parentNode;
+    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
+    const cardCheckboxs = noteCards.map(fiteredCard => fiteredCard.querySelector('.note_checkbox_btn'));
+
+    trackSelectonMood(); // Track selectoion mood 
+
+    // Loop through check button and notes card then add class to hightlight
+    cardCheckboxs.forEach(btn => {
+        btn.classList.toggle('show_note_checkbox_btn'); // Add class to display to check button
+    });
+
+    noteCards.forEach(card => {
+        card.classList.toggle('highlight_note_card'); // Add class to highlight all cads
+    });
+
+    // Call to add behaviour 
+    selectBehaviour(noteSection, cardSelectionMood);
+    selectAndCheckCardById(currentTarget.id); // Call and pass the id to match function parameter and get current clicked card
 }
 
 // Celect and disselect note card then add checked to the check button class
@@ -213,4 +206,30 @@ const selectAndCheckCardById = async (id) => {
     }
 }
 
+// Select be haviour
+function selectBehaviour(noteSection, cardSelectionMood) {
+    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
+    
+    // Select card beavour
+    if (openedSelection === 0) {
+        noteCards.forEach(card => {
+            const cardCheckbox = card.querySelector('.note_checkbox_btn'); 
+
+			// Reset add innerHTML and attributes
+            cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
+            cardCheckbox.classList.remove('show_note_checkbox_btn');
+            cardCheckbox.classList.remove('checked');
+            card.removeAttribute('is-selected', 'selected');
+        });
+
+        cardSelectionMood = false; // OFF
+        selectCard(noteSection, cardSelectionMood);
+        console.log('Selection Mood Off...', openedSelection);
+    } else if (openedSelection === 1) {
+        
+        cardSelectionMood = true; // ON
+        selectCard(noteSection, cardSelectionMood);
+        console.log('Selection Mood On...', openedSelection);
+    }
+}
 export default highlightCard;
