@@ -68,6 +68,7 @@
 button:disabled {
 	background-color: gray;
 	color: hsl(0, 0%, 19%);
+	cursor: not-allowed;
 }
 
 .button:hover {
@@ -75,7 +76,6 @@ button:disabled {
 	color: var(--BUTTON-HOVER-COLOR);
 	transform: translateX(-2px);
 }
-
 
 html {
   	scroll-behavior: smooth;
@@ -467,7 +467,19 @@ body {
 .empty_search_container {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	align-content: center;
+	height: 100%;
+	flex-flow: column nowrap;
 	padding-top: 1rem;
+	gap: 1rem;
+}
+
+.clear_search_btn {
+	width: fit-content;
+	background-color: rgba(15, 12, 12, 0.61);
+	color: aliceblue;
+	cursor: pointer;
 }
 
 /* *_*_*_*_*_*_*_*_*_*_*_*_*_*_* */

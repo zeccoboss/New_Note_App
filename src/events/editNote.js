@@ -7,10 +7,8 @@ const editNote = async (noteSection) => {
     const editNoteLogic = async (e) => {
         const storedData = await localNoteData;
 
-        // console.log(e.target);
         let cardId = e.currentTarget.id;
         let foundData = storedData.find(data => data.id === cardId);
-        console.log(foundData);
 
         // Select element from DOM
         const returnBtn = document.querySelector('.return_button');

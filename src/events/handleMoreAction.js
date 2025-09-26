@@ -9,7 +9,7 @@ const handleMoreAction = () => {
 		e.stopPropagation();
 		moreActionList.classList.toggle('show_more_action_list');
 		moreActionFlow.classList.toggle('action_flow');
-		console.log('More action toggled✅');
+		console.warn('More action toggled✅');
 	});
 
 	// Close list if navlist child element is clicked
@@ -20,9 +20,9 @@ const handleMoreAction = () => {
 	// close nav if clicked outside when opened 
 	document.addEventListener('click', (event) => {
 		if (moreActionList.classList.contains('show_more_action_list') && !moreActionList.contains(event.target)) {
-		moreActionList.classList.toggle('show_more_action_list');
-		moreActionFlow.classList.toggle('action_flow');
-		console.log('moreActionList toggled off ❌');
+			moreActionList.classList.toggle('show_more_action_list');
+			moreActionFlow.classList.toggle('action_flow');
+			console.warn('moreActionList toggled off ❌');
 		}
 	});
 }

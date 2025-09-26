@@ -138,5 +138,7 @@ export {
     checkboxSVG,
     unchecBoxkSVG,
     personProfileSVG,
-    searchIconSVG
+    searchIconSVG,
+    trashIconSVG,
+    restorIconSVG
 };

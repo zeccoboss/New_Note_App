@@ -1,5 +1,6 @@
 // Import SVG's
 import {checkboxSVG, unchecBoxkSVG } from "../assets/svg/svg-icons.js";
+import HighlightOptionsList from "../fragments/HighlightOptionsList.js";
 import editNote from "./editNote.js";
 
 // Declare global variabls for state tracking
@@ -33,23 +34,20 @@ const highlightCard = async (noteSection) => {
                 noteCard.classList.add('highlight_note_card');
                 cardCheckbox.classList.add('show_note_checkbox_btn');
             });
-            console.log(selectActionBtn.children[1]);
-            
 
-            selectActionBtn.innerHTML = 'Cancle';
+            selectActionBtn.innerHTML = `Cancle`;
         } else {
-
             selectActionBtn.innerHTML = 'Select';
         }
     });
 
+    // Reasign the set time out ID later
     let clickedIntervalID;
 
     // Loop and add event so start selection mood when ot turned on
     noteCards.forEach((card) => {
         // On computers
         card.addEventListener('mousedown', (e) => {    
-            // Get elements from DOM
             let currentTarget = e.currentTarget;
 
             clickedIntervalID = setTimeout((currentTarget) => {
@@ -67,7 +65,6 @@ const highlightCard = async (noteSection) => {
         
         // For mobile device
         card.addEventListener('touchstart', (e) => {    
-            // Get elements from DOM
             let currentTarget = e.currentTarget;
 
             clickedIntervalID = setTimeout((currentTarget, e) => {
@@ -87,20 +84,19 @@ const highlightCard = async (noteSection) => {
 
     // Call to keek select all note card functon on wait
     selectAllCard(noteSection, noteCards, selectAllBtn);
-    console.log('..................');
-    
+
+    // Call to append the hoight list option to The DOM
+    HighlightOptionsList(noteSection);
 }
 
 // Function to select all note card
 function selectAllCard(noteSection, noteCards, selectAllBtn) {
     // Turn on selection mood for state tracking
     cardSelectionMood = true;
-
-    console.log(cardSelectionMood);
     
     // Check if selection moode is on then add event listner
-    cardSelectionMood && selectAllBtn.disabled === false ?
-        selectAllBtn.addEventListener('click', (e) => {
+    cardSelectionMood && selectAllBtn.disabled === false 
+        ? selectAllBtn.addEventListener('click', (e) => {
             // Get the tag that triggared the event
             let currentTarget = e.currentTarget;
             noteCards.forEach(el => currentTarget.removeAttribute('is-selected', 'selected'));
@@ -131,7 +127,7 @@ function selectAllCard(noteSection, noteCards, selectAllBtn) {
         }) : null;
 }
 
-// Function to select all note card
+// Function to select single card
 function selectCard(noteSection, mood) {
     const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
     
@@ -226,7 +222,6 @@ function selectBehaviour(noteSection, cardSelectionMood) {
         selectCard(noteSection, cardSelectionMood);
         console.log('Selection Mood Off...', openedSelection);
     } else if (openedSelection === 1) {
-        
         cardSelectionMood = true; // ON
         selectCard(noteSection, cardSelectionMood);
         console.log('Selection Mood On...', openedSelection);

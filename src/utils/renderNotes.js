@@ -3,8 +3,10 @@ import EmptySearchResultContainer from '../fragments/EmptySearchResultContainer.
 import EmptyState from '../fragments/EmptyState.js';
 import Note from '../fragments/NoteCard.js';
 
+// Global variable to track state
 let initialNoteSectionState = 0;
 
+// function which render nots to DOM with given condition
 const renderNote = async (noteData, noteSection, noteStateValue) => {
     // Select element from the DOM
     const selectAllBtn = document.querySelector('#select-all-btn');
@@ -27,7 +29,7 @@ const renderNote = async (noteData, noteSection, noteStateValue) => {
         The initialNoteSectionState valuse are evaluated as follows
         _______________________________________________________________________________________________
        
-        0. There's no data to render .
+        0. There's no data to render .// Show an empty state when theres no data to render to page
         1. The initial rendering of found notes data when page first loads.
         2. The state when a new note is added or a search occured and the DOM and needs to be re-rendered, (2) is the passed value 
         3. Value passed when page tries to render a second time from the first page reload, its checked and asign (0) to initialNoteSectionState.
@@ -55,30 +57,23 @@ const renderNote = async (noteData, noteSection, noteStateValue) => {
     // console.log('state value:', initialNoteSectionState);
 
     if (initialNoteSectionState === 0) {
-        EmptyState(noteSection);
-        selectAllBtn.disabled = true;
+        EmptyState(noteSection); // Show an empty state when theres no data to render to page
+        selectAllBtn.disabled = true; // Disable theselect all button
     } else if (initialNoteSectionState === 1) {
-        noteData.forEach(note => {
-            noteSection.append(Note({ ...note }));
-        });
-
-        highlightCard(noteSection);
+        noteData.forEach(note => noteSection.append( Note( { ...note } ) )); // Loop through notes and add to DOM
+        highlightCard(noteSection); // Call the hight card function for the newly added cards
     } else if (initialNoteSectionState === 2) {
-        noteData.forEach(note => {
-            noteSection.append(Note({ ...note }));
-        });
-
-        selectAllBtn.disabled = false
-        highlightCard(noteSection);
-    return
+        noteData.forEach(note => noteSection.append( Note( { ...note } ) ));// Loop through notes and add to DOM
+        selectAllBtn.disabled = false; // Enable theselect all button 
+        console.log("Note section state: ", initialNoteSectionState); // Log state to console
+        highlightCard(noteSection); // Call the hight card function for the newly added cards
+        return;
     } else if (initialNoteSectionState === 4) {
-        // EmptyState(noteSection);
-        EmptySearchResultContainer(noteSection);
+        EmptySearchResultContainer(noteSection); // Show an empty area when no result found from search
     }
 
+    // Log state for bug tracking
     console.log("Note section state: ", initialNoteSectionState);
-    console.log(selectAllBtn);
-    
 }
 
 export default renderNote;

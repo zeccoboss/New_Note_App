@@ -25,7 +25,6 @@ const Main = async () => {
 	// main.addEventListener('')
 	
 	const { noteSection, noNotes } = await NoteSection();
-	// console.log("Are there motes? ", noNotes);
 		
 	main.append(noteSection, SettingsSection(), FormSection(), TrashSection());
 	

@@ -11,6 +11,7 @@ const EmptySearchResultContainer = (noteSection) => {
     // Set innerHTML
     emptyResultContainer.getElement().innerHTML = `
         <h3>No Results Found!</h3>
+        <button id="clear-search" class="clear_search_btn button">Clear Search</button>
     `;
 
     // Add to Note section

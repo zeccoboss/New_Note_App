@@ -25,7 +25,6 @@ const EmptyState = (noteSection) => {
         const selectActionBtn = document.querySelector('#select-action-button');
 
         selectAllBtn.disabled = true;
-        selectActionBtn.removeEventListener('click', (e) => { console.log('Mmmm...')});
 
         selectActionBtn.style.background = "gray";
         selectActionBtn.style.color = "hsl(0, 0%, 19%)";
