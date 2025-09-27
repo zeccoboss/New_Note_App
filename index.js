@@ -1,15 +1,10 @@
-
+// Import components
 import Header from './src/components/Header.js';
 import InnerContainer from './src/components/InnerContainer.js';
 import Footer from './src/components/Footer.js';
 import initApp from './src/utils/initApp.js';
 
-window.onerror = (msg, src, lineno, colno, err) => {
-    alert(`Error: ${msg}\nSource: ${src}\nLine: ${lineno}, Column: ${colno}`);
-  // console.error(err);
-};
-
-
+// Create a function to render app and call the init function
 const renderApp = () => {
     const app = document.querySelector('#app');
     
@@ -23,4 +18,3 @@ const renderApp = () => {
 };
 
 renderApp();
-

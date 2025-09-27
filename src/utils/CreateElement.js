@@ -11,7 +11,6 @@ class CreateElement extends SetInnerHTML {
         return this.element;
     }
 
-        
     setType(type) {
         this.element.setAttribute('type', type);
     }

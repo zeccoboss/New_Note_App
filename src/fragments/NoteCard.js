@@ -35,9 +35,9 @@ const NoteCard = ({id, title, content, date}) => {
 	noteCheckBoxBtn.setId(`card-btn-${id}`);
     
     // Set elements textContent
-    noteTitle.textContent = title;
-    noteContent.textContent = content;
-    noteDate.textContent = date;
+    noteTitle.textContent = `${title.substring(0, 16)}...`;
+    noteContent.textContent = `${content.slice(0, 41)}...`;
+    noteDate.textContent = `${date.substring(0, 25)}...`;
 
     // Set innerHTML
     noteCard.append(noteTitle, noteContent, noteDate, noteCheckBoxBtn.getElement());

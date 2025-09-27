@@ -347,6 +347,7 @@ body {
 	cursor: pointer;
 	transition: var(--TRANSITION);
 	position: relative;
+	text-wrap: no-wrap;
 }
 
 
@@ -354,6 +355,8 @@ body {
 	background-color: var(--CARD-HOVER-BG);
 	color: var(--CARD-HOVER-COLOR);
 	transform: translateY(-3px);
+	overflow: hidden;
+	max-width: 100%;
 }
 
 .highlight_note_card {
@@ -395,6 +398,56 @@ body {
 	background-color: hsla(249, 100%, 10%, 0.041);
 	color: hsl(219, 100%, 21%);
 	transform: unset;
+}
+
+.highlight_option_container {
+	display: flex;
+	flex-direction: column;
+	width: 10rem;
+	position: fixed;
+	top: 12.3rem;
+	right: 0.1rem;
+	list-style-type: none;
+}
+
+.option_list_toggler {
+	padding: var(--PADDING);
+	cursor: pointer;
+	visibility: hidden;
+}
+
+.show_option_list_toggler {
+	visibility: visible;
+}
+
+.highlight_option_list {
+	list-style-type: none;
+	background-color: hsla(0, 0%, 0%, 0.5);
+	height: fit-content;
+	margin-top: 0.2rem;
+	color: hsl(0, 0%, 100%);
+	width: 0;
+	overflow-y: hidden;
+}
+
+.show_highlight_option_list {
+	width: 10rem;
+}
+
+
+.options_list {
+	padding: 0 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: var(--TRANSITION);
+	width: 10rem;
+}
+
+.options_list:hover {
+	opacity: 0.7;
 }
 
 .note_checkbox_btn {
@@ -877,18 +930,37 @@ body {
 	padding-bottom: 5rem;
 }
 
-.save_button {
+.save_button,
+.update_button {
 	position: absolute;
 	bottom: 2rem;
 	right: 2rem;
+	color: aliceblue;
 	background-color: hsla(0, 0%, 0%, 0.4);
 	/* padding: var(--SAVE-B-PADDING); */
-	width: 2rem;
-	height: 2rem;
+	width: 4rem;
+	height: 2.5rem;
 	box-shadow: unset;
-	box-shadow: 0px 0px 5px hsla(0, 100%, 4%, 1);
-	/* animation: beat 3s infinite both linear; */
+	box-shadow: 0px 0px 5px rgba(20, 0, 0, 0.61);
+	animation: beat 3s infinite both linear;
 	border-radius: 1rem;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.update_button {
+	bottom: 5rem;
+}
+
+.show_note_form_btn {
+	visibility: visible;
+	opacity: 1;
+}
+
+.save_button:hover,
+.update_button:hover {
+	color: white;
+	border-color: rgba(0, 0, 0, 0.37);
 }
 
 /* Form --> Save Button Animation */
@@ -966,6 +1038,21 @@ body {
     background-color: var(--DARKTHEME-BG-COLOR);
 	color: var(--DARKTHEME-COLOR);
 }
+
+.dark_theme .highlight_option_list {
+	background-color: hsla(208, 100%, 97%, 0.25);
+}
+
+.dark_theme .options_list:hover {
+	background-color: hsla(0, 0%, 93%, 0.5);
+}
+
+.dark_theme .option_list_toggler {
+	background-color: rgba(0, 0, 0, 0.541);
+	border: none;
+	box-shadow: 0px 0px 5px hsla(0, 0%, 94%, 0.5);
+}
+
 
 .dark_theme > .header,
 .dark_theme > .footer {

@@ -7,7 +7,13 @@ import { pencilSvg } from "../assets/svg/svg-icons.js";
 
 const handleAddNotes = (event) => {
     const { returnButton, titleInput, navHeading, formSection, noteSection } = selectElements();
-    
+    const saveBtn = formSection.querySelector('.save_button');
+    const updateBtn = formSection.querySelector('.update_button');
+
+    // Remove class to determine how note will be saved
+    saveBtn.classList.add('show_note_form_btn');
+    updateBtn.classList.remove('show_note_form_btn');
+
     // Call to hide page buttons
     hideButtons();
 

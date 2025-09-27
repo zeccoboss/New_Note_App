@@ -11,12 +11,14 @@ import handleNewNote from '../events/handleNewNote.js';
 
 // Import events
 import SetElementAttributes from '../utils/SetElementAttributes.js';
+import CreateElement from '../utils/CreateElement.js';
 
 const NoteForm = () => {
 	// Create element 
 	const form = document.createElement('form');
 	const timeElement = document.createElement('span');
 	const saveButton = document.createElement('button');
+	const updateButton = new CreateElement('button');
 
 	// 
 	const currentTime = dateHandler();
@@ -39,17 +41,23 @@ const NoteForm = () => {
 	// timeElementAttributes.showElement();
 	// saveButtonAttributes.showElement();
 
+	updateButton.setId('update-button');
+	updateButton.addClass('update_button', 'button');
+	updateButton.setType('button');
+
 	// Set innerHTML and innerText
 	timeElementAttributes.setInnerHTML(`${currentTime}`);
-	saveButtonAttributes.setInnerText('✅');
+	saveButtonAttributes.setInnerText('Save');
+	updateButton.setInnerHTML('Update');
 	
 	// Add element to DOM
 	form.append(
 		timeElement,
 		Input(),
 		TextArea(),
-		saveButton
-	)
+		saveButton,
+		updateButton.getElement()
+	);
 
 	// Call to save new note
 	handleNewNote(Input(), TextArea(), form);

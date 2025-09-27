@@ -1,6 +1,5 @@
 // Import SVG's
 import {checkboxSVG, unchecBoxkSVG } from "../assets/svg/svg-icons.js";
-import HighlightOptionsList from "../fragments/HighlightOptionsList.js";
 import editNote from "./editNote.js";
 
 // Declare global variabls for state tracking
@@ -9,7 +8,7 @@ let openedSelection = 0;
 let selectionCount = 0;
 
 // Track selectoion mood function
-const trackSelectonMood = () => { openedSelection < 1 ? openedSelection++ : openedSelection = 0; }// Add 1 if value is 0
+const trackSelectonMood = () =>  openedSelection < 1 ? openedSelection++ : openedSelection = 0;// Add 1 if value is 0
 
 // Highligt all notes
 const highlightCard = async (noteSection) => {
@@ -17,28 +16,43 @@ const highlightCard = async (noteSection) => {
     const selectActionBtn = document.querySelector('#select-action-button'); 
     const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
     const selectAllBtn = document.querySelector('#select-all-btn');
-
+    const cardCheckboxs = Array.from(noteSection.getElementsByClassName('note_checkbox_btn'));
+    
     // Add event listener to selectActionBtn
     selectActionBtn.addEventListener('click', (e) => {
         // Turn on selection mood for state tracking
         cardSelectionMood = true;
-        trackSelectonMood(); // Track selectoion mood 
+        let once = 0;
 
-        // call select behaviour function
-        selectBehaviour(noteSection, cardSelectionMood);
+        if (openedSelection === 0) {
+            trackSelectonMood();
+            
+            noteCards.forEach(card => {
+                const cardCheckbox = card.querySelector('.note_checkbox_btn'); 
 
-        // Ceck selection mood if on loop troug cards and add class to igtligt
-        if (cardSelectionMood) {
-            noteCards.forEach(noteCard => {
-                const cardCheckbox = noteCard.querySelector('.note_checkbox_btn');
-                noteCard.classList.add('highlight_note_card');
+                card.classList.add('highlight_note_card');
                 cardCheckbox.classList.add('show_note_checkbox_btn');
             });
 
-            selectActionBtn.innerHTML = `Cancle`;
-        } else {
-            selectActionBtn.innerHTML = 'Select';
+            // call select behaviour function
+            selectBehaviour(noteSection, cardSelectionMood);
+            return;
         }
+        
+        if (openedSelection === 1) {
+            trackSelectonMood();
+
+            noteCards.forEach(card => {
+                const cardCheckbox = card.querySelector('.note_checkbox_btn'); 
+
+                card.classList.remove('highlight_note_card');
+                cardCheckbox.classList.remove('show_note_checkbox_btn');
+            });
+
+            console.log('Selection Mood On...', openedSelection);
+            return;
+        }
+
     });
 
     // Reasign the set time out ID later
@@ -84,9 +98,6 @@ const highlightCard = async (noteSection) => {
 
     // Call to keek select all note card functon on wait
     selectAllCard(noteSection, noteCards, selectAllBtn);
-
-    // Call to append the hoight list option to The DOM
-    HighlightOptionsList(noteSection);
 }
 
 // Function to select all note card

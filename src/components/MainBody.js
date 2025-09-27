@@ -7,9 +7,8 @@ import TrashSection from '../fragments/TrashSection.js';
 // Import class
 import SetElementAttributes from '../utils/SetElementAttributes.js';
 
-// Import service handler 
-import { getNoteData } from '../../service/notesService.js';
 import selectElements from '../helpers/selectElements.js';
+import HighlightOptionsList from '../fragments/HighlightOptionsList.js';
 
 const Main = async () => {
 	// Create element
@@ -29,6 +28,9 @@ const Main = async () => {
 	main.append(noteSection, SettingsSection(), FormSection(), TrashSection());
 	
 	selectElements(main, noteSection);
+
+	// Call to append the hoight list option to The DOM
+    HighlightOptionsList(main);
 	return main;
 }
 
