@@ -1,236 +1,80 @@
-// Import SVG's
-import {checkboxSVG, unchecBoxkSVG } from "../assets/svg/svg-icons.js";
-import editNote from "./editNote.js";
+import selectElements from "../helpers/selectElements.js";
 
-// Declare global variabls for state tracking
-let cardSelectionMood = false;
-let openedSelection = 0;
-let selectionCount = 0;
+const savedNoteAppTheme = JSON.parse(localStorage.getItem('saved-note-app-theme')) || null;
 
-// Highligt all notes
-const highlightCard = async (noteSection) => {
-    // Select element from DOM
-    const selectActionBtn = document.querySelector('#select-action-button'); 
-    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-    const selectAllBtn = document.querySelector('#select-all-btn');
-    const cardCheckboxs = Array.from(noteSection.getElementsByClassName('note_checkbox_btn'));
+const app = document.querySelector('#app');
 
+if (savedNoteAppTheme) {
+    app.classList.add(savedNoteAppTheme);
+}
 
-    // Add event listener to selectActionBtn
-    selectActionBtn.addEventListener('click', (e) => {
-        // Turn on selection mood for state tracking
-        cardSelectionMood = true;
+// Save theme and change themeListTerm content
+const storThemeAndChangTerm = (themeListTerm, theme, textContent, eventTarget) => {
+    themeListTerm.innerHTML = textContent;
 
-        if (openedSelection === 0) {
-            openedSelection = 1;
+    // Save value to local storage
+    localStorage.setItem('saved-note-app-theme', JSON.stringify(theme));
+}
 
-            noteCards.forEach(card => {
-                const cardCheckbox = card.querySelector('.note_checkbox_btn'); 
+function applyTheme(themeBtnContainer, themeListTerm) {
+    // 
+    themeBtnContainer.addEventListener('click', (e) => {
+        const eventTarget = e.target;
+        const currentTarget = e.currentTarget;
 
-                card.classList.add('highlight_note_card');
-                cardCheckbox.classList.add('show_note_checkbox_btn');
-            });
+        const darkThemeBtn = currentTarget.querySelector('.dark_theme_btn');
+        const defaultTheme = currentTarget.querySelector('.system_default_theme_btn');
+        const lightThemeBtn = currentTarget.querySelector('.light_theme_btn');
 
+        // Check the theme value returned from local storage
+        if (eventTarget === darkThemeBtn) {
+            app.classList.add("dark_theme");
+            app.classList.remove("light_theme");
+            app.classList.remove("system_default");
 
-            // call select behaviour function
-            selectBehaviour(noteSection, cardSelectionMood);
-            openedSelection = 1;
+            // Call to save theme to local storage
+            storThemeAndChangTerm(themeListTerm,"dark_theme", "Dark theme", eventTarget);
+        } else if (eventTarget === defaultTheme) {
+            app.classList.add("system_default");
+            app.classList.remove("dark_theme");
+            app.classList.remove("light_theme");
+
+            // Call to save theme to local storage
+            storThemeAndChangTerm(themeListTerm, "system_default", "System efault", eventTarget);
+        } else if (eventTarget === lightThemeBtn) {
+            app.classList.add("light_theme");
+            app.classList.remove("dark_theme");
+            app.classList.remove("system_default");
+
+            // Call to save theme to local storage
+            storThemeAndChangTerm(themeListTerm, "light_theme", "Light theme", eventTarget);
         } else {
-           noteCards.forEach(card => {
-                const cardCheckbox = card.querySelector('.note_checkbox_btn'); 
-
-                card.classList.remove('highlight_note_card');
-                cardCheckbox.classList.remove('show_note_checkbox_btn');
-            });
+            app.classList.remove("light_theme");
+            app.classList.remove("dark_theme");
+            app.classList.remove("system_default");
         }
-
-        openedSelection = 0;
     });
 
-    // Reasign the set time out ID later
-    let clickedIntervalID;
-
-    // Loop and add event so start selection mood when ot turned on
-    noteCards.forEach((card) => {
-        // On computers
-        card.addEventListener('mousedown', (e) => {    
-            let currentTarget = e.currentTarget;
-
-            clickedIntervalID = setTimeout((currentTarget) => {
-               holdToSelectCard(currentTarget); //
-            }, 500, currentTarget);
-        });
-
-        card.addEventListener('mouseup', (e) => {    
-            // Clear interval when the time passed not completed
-            clearTimeout(clickedIntervalID);
-
-            // When notes note highlighted edit note instead
-            editNote(noteSection);
-        });
-        
-        // For mobile device
-        card.addEventListener('touchstart', (e) => {    
-            let currentTarget = e.currentTarget;
-
-            clickedIntervalID = setTimeout((currentTarget, e) => {
-               holdToSelectCard(currentTarget); //
-            }, 500, currentTarget); 
-        });
-
-        // For mobile device
-        card.addEventListener('touchend', (e) => {    
-            // Clear interval when the time passed not completed
-            clearTimeout(clickedIntervalID);
-
-            // When notes note highlighted edit note instead
-            editNote(noteSection);
-        });
-    });
-
-    // Call to keek select all note card functon on wait
-    selectAllCard(noteSection, noteCards, selectAllBtn);
-}
-
-// Function to select all note card
-function selectAllCard(noteSection, noteCards, selectAllBtn) {
-    // Turn on selection mood for state tracking
-    cardSelectionMood = true;
-    
-    // Check if selection moode is on then add event listner
-    cardSelectionMood && selectAllBtn.disabled === false 
-        ? selectAllBtn.addEventListener('click', (e) => {
-            // Get the tag that triggared the event
-            let currentTarget = e.currentTarget;
-            noteCards.forEach(el => currentTarget.removeAttribute('is-selected', 'selected'));
-            openedSelection = 1;
-
-            // Highlight note card when select mood is on
-            noteCards.forEach(card => {
-                const cardCheckbox = card.querySelector('.note_checkbox_btn');
-
-                // Toggle class 
-                card.classList.toggle('highlight_note_card');
-                cardCheckbox.classList.toggle('show_note_checkbox_btn');
-                
-                // Check and asign appropraite values
-                if (!cardCheckbox.classList.contains('checked')) {
-                    cardCheckbox.innerHTML = `${checkboxSVG}`;
-                    cardCheckbox.classList.add('checked');
-                    currentTarget.setAttribute('is-selected', 'selected');  
-                } else if (cardCheckbox.classList.contains('checked')) {
-                    cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
-                    cardCheckbox.classList.remove('checked');
-                    currentTarget.removeAttribute('is-selected', 'selected');
-                }
-			});
-
-            // call select behaviour function
-            selectBehaviour(noteSection, cardSelectionMood);
-            openedSelection = 0;
-        }) : null;
-}
-
-// Function to select single card
-function selectCard(noteSection, mood) {
-    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-    
-    // Check if selection moode is on then add event listner
-    mood ? noteCards.forEach(card => { card.addEventListener('click', selectAndCheckCardLogic)})
-        : noteCards.forEach(card => { card.removeEventListener('click', selectAndCheckCardLogic)});
-}
-
-// Celect and disselect note card then add checked to the check button class
-const selectAndCheckCardLogic = (e) => {
-    let currentTarget = e.currentTarget;    
-
-    // const noteCards = await Array.from(noteSection.getElementsByClassName('note_card'));
-    const cardCheckbox = e.currentTarget.querySelector('.note_checkbox_btn');
-
-    // Check and asign appropraite values
-    if (!cardCheckbox.classList.contains('checked')) {
-        cardCheckbox.innerHTML = `${checkboxSVG}`;
-        cardCheckbox.classList.add('checked');
-        currentTarget.setAttribute('is-selected', 'selected');  
-    } else if (cardCheckbox.classList.contains('checked')) {
-        cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
-        cardCheckbox.classList.remove('checked');
-        currentTarget.removeAttribute('is-selected', 'selected');
-    }
-}
-
-// 
-const holdToSelectCard = (currentTarget) => {
-    cardSelectionMood = true; // ON
-    openedSelection = 1;
-                    
-    const noteSection = currentTarget.parentNode;
-    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-    const cardCheckboxs = noteCards.map(fiteredCard => fiteredCard.querySelector('.note_checkbox_btn'));
-
-    // Loop through check button and notes card then add class to hightlight
-    cardCheckboxs.forEach(btn => {
-        btn.classList.toggle('show_note_checkbox_btn'); // Add class to display to check button
-    });
-
-    noteCards.forEach(card => {
-        card.classList.toggle('highlight_note_card'); // Add class to highlight all cads
-    });
-
-    // Call to add behaviour 
-    selectBehaviour(noteSection, cardSelectionMood);
-    selectAndCheckCardById(currentTarget.id); // Call and pass the id to match function parameter and get current clicked card
-    openedSelection = 0;
-}
-
-// Celect and disselect note card then add checked to the check button class
-const selectAndCheckCardById = async (id) => {
-    try {
-        let currentTarget = document.getElementById(`${id}`);    
-
-        // const noteCards = await Array.from(noteSection.getElementsByClassName('note_card'));
-        const cardCheckbox = currentTarget.querySelector('.note_checkbox_btn');
-
-        // Check and asign appropraite values
-        if (!cardCheckbox.classList.contains('checked')) {
-            cardCheckbox.innerHTML = `${checkboxSVG}`;
-            cardCheckbox.classList.add('checked');
-            currentTarget.setAttribute('is-selected', 'selected');  
-        } else if (cardCheckbox.classList.contains('checked')) {
-            cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
-            cardCheckbox.classList.remove('checked');
-            currentTarget.removeAttribute('is-selected', 'selected');
+    // Hide themeBtnContainer if active
+    document.body.addEventListener('click', (e) => {
+        if (themeBtnContainer.classList.contains('show_theme_btn_container') && e.target !== themeBtnContainer) {
+            themeBtnContainer.classList.remove('show_theme_btn_container');
         }
-    } catch (error) {
-        console.warn(error);
-    }
+    });
 }
 
-// Select be haviour
-function selectBehaviour(noteSection, cardSelectionMood) {
-    const noteCards = Array.from(noteSection.getElementsByClassName('note_card'));
-    console.log(ops);
+const appTheme = (e) => {
+    // Stop bubble
+    e.stopPropagation();
+
+    // Get element
+    const dropDownRightAngleSvg = e.currentTarget.querySelector('svg');
+    const themeBtnContainer = document.querySelector('.theme_btn_container');
     
-    // Select card beavour
-    if (openedSelection === 0) {
-
-        noteCards.forEach(card => {
-            const cardCheckbox = card.querySelector('.note_checkbox_btn'); 
-
-			// Reset add innerHTML and attributes
-            cardCheckbox.innerHTML = `${unchecBoxkSVG}`;
-            cardCheckbox.classList.remove('show_note_checkbox_btn');
-            cardCheckbox.classList.remove('checked');
-            card.removeAttribute('is-selected', 'selected');
-        });
-
-        cardSelectionMood = false; // OFF
-        selectCard(noteSection, cardSelectionMood);
-        console.log('Selection Mood Off...', openedSelection);
-    } else if (openedSelection === 1) {
-        cardSelectionMood = true; // ON
-        selectCard(noteSection, cardSelectionMood);
-        console.log('Selection Mood On...', openedSelection);
-    }
+    // Toggle classes for accesibility
+    dropDownRightAngleSvg.classList.toggle('rotate_drop_down_svg');
+    themeBtnContainer.classList.toggle('show_theme_btn_container');
 }
-export default highlightCard;
+
+export default appTheme;
+export { savedNoteAppTheme, applyTheme };

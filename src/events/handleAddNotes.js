@@ -6,9 +6,13 @@ import selectElements from "../helpers/selectElements.js";
 import { pencilSvg } from "../assets/svg/svg-icons.js";
 
 const handleAddNotes = (event) => {
-    const { returnButton, titleInput, navHeading, formSection, noteSection } = selectElements();
+    const { returnButton, titleInput, navHeading, formSection, noteSection, noteTextArea} = selectElements();
     const saveBtn = formSection.querySelector('.save_button');
     const updateBtn = formSection.querySelector('.update_button');
+
+    // Clear input and textarea after all operation is complete
+    titleInput.value = '';
+    noteTextArea.value = '';
 
     // Remove class to determine how note will be saved
     saveBtn.classList.add('show_note_form_btn');

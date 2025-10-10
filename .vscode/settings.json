@@ -1,3 +1,9 @@
 {
-    "editor.minimap.autohide": "none"
+	"editor.minimap.autohide": "none",
+	"C_Cpp.autocompleteAddParentheses": true,
+	"cssPeek.trace.server": "messages",
+	"emmet.showAbbreviationSuggestions": true,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"C_Cpp.vcFormat.indent.accessSpecifiers": false
 }

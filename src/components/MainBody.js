@@ -21,12 +21,13 @@ const Main = async () => {
 	MainAttributes.setId('main');
 	MainAttributes.addClass('main');
 
-	// main.addEventListener('')
-	
+	// Get noteSection
 	const { noteSection, noNotes } = await NoteSection();
 		
+	// Add Sections to DOM
 	main.append(noteSection, SettingsSection(), FormSection(), TrashSection());
 	
+	// Select element Fuction
 	selectElements(main, noteSection);
 
 	// Call to append the hoight list option to The DOM

@@ -9,7 +9,7 @@ function showFullProfile(e) {
         settingsForm.classList.remove('show_settings_form');
     }
 
-    
+    // profileCard.addEventListener('click', (e) => e.preventDefault)
 
     // Toggle classes for accesibility
     profileCard.classList.toggle('full_profile_card');

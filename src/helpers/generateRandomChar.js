@@ -4,7 +4,6 @@ const randomCharGenerator = (length = 3) => {
     let numbers = '123467890';
 
     const characters = `${lowerCase}${upperCase}${numbers}`.split('');
-    // console.log(characters);
     
     for (let i = characters.length -1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

@@ -1,14 +1,38 @@
-
 // Import fragments
 import NoteForm from "../fragments/NoteForm.js";
 
 // Import Helpers
 import selectElements from "./selectElements.js";
-import renderNote from "../utils/renderNotes.js";
 import showButtons from "./showButtons.js";
-import { localNoteData } from "../utils/initApp.js";
-import { foundData } from "../events/editNote.js";
-import { updatedNoteData } from "./saveNote.js";
+import { foundData } from "./editNote.js";
+import StateMessage from "../fragments/StateMessage.js";
+
+// Import utils
+import renderNote from "../utils/renderNotes.js";
+
+// Import services
+import GetLocalStorageData from "../../service/GetLocalStorageData.js";
+
+// Instantiate Class 
+const ManageNoteData_UpdateNote = new GetLocalStorageData('NoteData', 'updateNote', 'zecco_note_app-Note');
+
+// When called updates notes with te given parameters
+const updatedNoteData = (noteData, idValue, title, note, currentTime) => {
+    // Create a new note from values passed from parameters
+    let newNoteData = { id: idValue, title: title, content: note, date: currentTime }
+
+    // Add to the new note data to saved note data array
+    noteData.unshift(newNoteData);
+
+    // Sort data and keep new data first
+    noteData.sort((a, b) => a.date - b.date);
+
+    // Save note data to local storage
+    ManageNoteData_UpdateNote.updateNoteData(noteData);
+ 
+    // Return the saved note data to update the DOM
+    return ManageNoteData_UpdateNote.getNoteData();
+}
 
 const updateNote = async (e) => {
 // Stop the page refresh on submit of note form
@@ -23,7 +47,7 @@ const updateNote = async (e) => {
     const { currentTime } = NoteForm(); // Get time values from Note form
 
     // Collect data from local storage
-    const savedNoteData = await localNoteData;
+    const savedNoteData = await ManageNoteData_UpdateNote.getNoteData();
 
     // Filter all notes to remove one thats being updated
     const filteredNoteData = savedNoteData.filter((data) => data.id !== foundData.id);
@@ -39,8 +63,7 @@ const updateNote = async (e) => {
         // Get note section from current scope so valid element can be sent to render notes function
         const noteSection = document.querySelector('.note_section');
 
-        // Call render function when no data specified and return array, note section and 3 for error handling
-        // renderNote([], noteSection, 3); // Must send note section since the render function clears the DOM it completelt wipes the note card selection mood
+        // render the note section
         renderNote(filteredNoteData, noteSection, 2); //
     } else if (title && note) {
         console.log('All note content is specified by user');   
@@ -49,7 +72,10 @@ const updateNote = async (e) => {
         const noteSection = document.querySelector('.note_section');
 
         // Call the update note function and collect the returned values and update the DOM then all to local storage
-        let updatedData = updatedNoteData(filteredNoteData, foundData.id, title, note, currentTime);
+        let updatedData = await updatedNoteData(filteredNoteData, foundData.id, title, note, currentTime);
+
+        // Pass a state message
+        StateMessage(noteSection, 'Note updated.');
 
         // render the note section
         renderNote(updatedData, noteSection, 2);
@@ -60,7 +86,10 @@ const updateNote = async (e) => {
         const noteSection = document.querySelector('.note_section');
 
         // Call the update note function and collect the returned values and update the DOM then all to local storage
-        let updatedData =  updatedNoteData(filteredNoteData, foundData.id, 'No title specified', note, currentTime);        
+        let updatedData = await updatedNoteData(filteredNoteData, foundData.id, 'No title specified', note, currentTime);      
+        
+        // Pass a state message
+        StateMessage(noteSection, 'Note updated.');
 
         // render the note section
         renderNote(updatedData, noteSection, 2);
@@ -68,7 +97,10 @@ const updateNote = async (e) => {
         console.warn('Note data not specified by user');
         console.log('');
         // Call the update note function and collect the returned values and update the DOM then all to local storage
-        let updatedData =  updatedNoteData(filteredSavedData, foundData.id, title, 'Note content not specified!', currentTime);
+        let updatedData = await updatedNoteData(filteredSavedData, foundData.id, title, 'Note content not specified!', currentTime);
+
+        // Pass a state message
+        StateMessage(noteSection, 'Note updated.');
 
         // render the note section
         renderNote(updatedData, noteSection, 2);

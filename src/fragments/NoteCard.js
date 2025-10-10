@@ -5,7 +5,6 @@ import CreateElement from "../utils/CreateElement.js";
 // Import SVG's
 import { unchecBoxkSVG } from '../assets/svg/svg-icons.js';
 
-
 const NoteCard = ({id, title, content, date}) => {
     const noteCard = document.createElement('div');
     const noteTitle = document.createElement('h4');
@@ -16,7 +15,6 @@ const NoteCard = ({id, title, content, date}) => {
 	noteCheckBoxBtn.setType('checkbox');
     noteCheckBoxBtn.setInnerHTML(`${unchecBoxkSVG}`);
     
-
     // Initiate instance of SetElementAttributes
     const NoteCardAttributes = new SetElementAttributes(noteCard);
     const NoteTitleAttributes = new SetElementAttributes(noteTitle);
@@ -37,7 +35,7 @@ const NoteCard = ({id, title, content, date}) => {
     // Set elements textContent
     noteTitle.textContent = `${title.substring(0, 16)}...`;
     noteContent.textContent = `${content.slice(0, 41)}...`;
-    noteDate.textContent = `${date.substring(0, 25)}...`;
+    noteDate.textContent = `${date.substring(0, 30)}.`;
 
     // Set innerHTML
     noteCard.append(noteTitle, noteContent, noteDate, noteCheckBoxBtn.getElement());

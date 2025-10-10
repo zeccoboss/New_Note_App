@@ -12,11 +12,6 @@ import enterSettings from '../events/enterSettings.js';
 import moreActionNavigation from '../events/moreActionNavigation.js';
 import enterTrash from '../events/enterTrash.js';
 
-// Import services
-import getLocalStorageNoteData from '../../service/localSorageData.js';
-
-const localNoteData = getLocalStorageNoteData();
-
 // Core function to link all functionality 
 const initApp = async () => {
 	// Log starting app for debugging purpose
@@ -34,4 +29,3 @@ const initApp = async () => {
 }
 
 export default initApp;
-export { localNoteData };

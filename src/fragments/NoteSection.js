@@ -1,19 +1,21 @@
-// Import fragments 
-import Note from './NoteCard.js';
+// Import services
+import GetLocalStorageData from "../../service/GetLocalStorageData.js";
 
 // Import class
 import SetElementAttributes from '../utils/SetElementAttributes.js';
 
-// Keep initial state of app
-// let initialNoteSectionState = 0; 
+// Import utils
+import renderNote from '../utils/renderNotes.js';
+
+// Import events
+import searchNotes from '../events/searchNotes.js';
+
+// Instantiate Class 
+const ManageNoteData_RenderNote = new GetLocalStorageData('NoteData', 'NoteSection', 'zecco_note_app-Note');
+
+// Declare global variables
 let calledStateOnce = true;
 let renderCount = 0;
-
-// Import service handler 
-import { getNoteData } from '../../service/notesService.js';
-import renderNote from '../utils/renderNotes.js';
-import searchNotes from '../events/searchNotes.js';
-import { localNoteData } from '../utils/initApp.js';
 
 const NoteSection = async () => {
     // Create element
@@ -27,7 +29,7 @@ const NoteSection = async () => {
     NoteSectionAttributes.addClass('note_section', 'section', 'active_section');
     
     // const noteData = await getNoteData(); // Skip for now till Node Server is set up
-    const noteData = await localNoteData;
+    const noteData = await ManageNoteData_RenderNote.getNoteData();
 
     // Declare to keep track of notes
     let noNotes = true;
@@ -44,6 +46,7 @@ const NoteSection = async () => {
 
     // Search notes
     searchNotes(noteSection);
+    
 
 
     // Return noteSection

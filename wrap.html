@@ -1,209 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+<html lang="en"><head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="ZECCO">
+	<meta name="keywords" content="notepad noteapp notebook webnoteapp note">
+	<meta name="description" content="A note app that can be acessed on web to write down minimal content. Built with HTML, CSS and JavaScript">
+	<title>Note App</title>
+	<!-- <link rel="stylesheet" href="style.css"> -->
+	<!-- <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon"> -->
 </head>
 
-<body>
-<nav class="header_nav">
-	<ul class="header_nav_list">
-		<div class="return_nav_container">
-		<li class="nav_list_items">
-			<button class="return_button button" type="button">🏠</button>
-		</li>
-		</div>
+<body class="">
+	<div id="app" class="wrapper dark_theme">
+		<!-- All Dynamic Contents Goes Here -->
+	<header id="header" class="header"><nav id="header-nav" class="header_nav"><ul id="header-nav-list" class="header_nav_list"><div id="return-nav-container" class="return_nav_container"><li class="nav_list_items" id="nav-list-items"><button class="return_button button edit" id="return-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-houses" viewBox="0 0 16 16">
+        <path d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207z"></path>
+    </svg>
+</button></li></div><div id="nav-content" class="nav_content">
+    <li class="nav_list_items">
+      <button class="button add_note" style="visibility: visible;">
+        
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+        <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"></path>
+        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"></path>
+    </svg>
 
-		<h1 class="header_nav_heading"></h1>
+      </button>
+    </li>
+  
+    <li class="nav_list_items more_action_container">
+        <div class="">
+            <button class="button show_more_action_button" id="show-more-action-button" style="visibility: visible;">
+            <span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"></path>
+    </svg>
+</span>
+            <span id="action-flow" class="">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"></path>
+    </svg>
+</span>
+            </button>
+        </div>
+        
+        <div class="more_action_content">
+            <ul class="more_action_list" id="more-action-list"> 
+                <li class="more_action_button" id="refresh-action-button">
+                    
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"></path>
+        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"></path>
+    </svg>
 
-		
-		<div class="nav_content">
-		<li class="nav_list_items">
-			<button class="button add_note">
-			Add note
-			</button>
-		</li>
-		
-		<li class="nav_list_items more_action_container">
-			<div class="">
-			<button class="button show_more_action">
-				<span>More</span>
-				<span>&gt</span>
-			</button>
-			</div>
+                    <span class="more_action_span">Refresh</span>
+                </li>
+
+                <li class="more_action_button" id="settings-action-button">
+                    
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear gear_svg" viewBox="0 0 16 16">
+        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"></path>
+        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"></path>
+    </svg>
+
+                    <span class="more_action_span">Settings</span>
+                </li>
+
+                <li class="more_action_button" id="select-action-button">
+                    
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+        <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"></path>
+    </svg>
+
+                    <span class="more_action_span">Select</span>
+                </li>
+
+                <li class="more_action_button" id="trash-action-button">
+                    T
+                    <span class="more_action_span">Trash</span>
+                </li>
+
+                <li class="more_action_button" id="exit-action-button">
+                    
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-escape" viewBox="0 0 16 16">
+        <path d="M8.538 1.02a.5.5 0 1 0-.076.998 6 6 0 1 1-6.445 6.444.5.5 0 0 0-.997.076A7 7 0 1 0 8.538 1.02"></path>
+        <path d="M7.096 7.828a.5.5 0 0 0 .707-.707L2.707 2.025h2.768a.5.5 0 1 0 0-1H1.5a.5.5 0 0 0-.5.5V5.5a.5.5 0 0 0 1 0V2.732z"></path>
+    </svg>
+
+                    <span class="more_action_span">Exit</span>
+                </li> 
+            </ul>
+        </div>
+    </li>
+  </div></ul></nav><div class="search_container">
+		<h1 class="header_nav_heading" id="header-nav-heading" style="font-size: 2.2rem;">Notes</h1>
+		<input type="search" name="" id="search-inpit" class="search_input" aria-label="search notes" autocomplete="on" placeholder="Search notes...." style="visibility: visible;">
+    </div></header><div id="inner-container" class="inner_container"><main id="main" class="main"><section id="note-section" class="note_section section active_section"><div id="UUveeP" class="note_card" data-is-selected="selected"><h4 class="note_title">222...</h4><p class="note_content">xdwwww...</p><small class="note_date">Wed Oct 01 2025 — 11:19:39 AM.</small><button type="checkbox" class="note_checkbox_btn checked" id="card-btn-UUveeP">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-square checkbox_svg" viewBox="0 0 16 16">
+        <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5z"></path>
+        <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0"></path>
+    </svg>
+</button></div><div id="arjhZh" class="note_card"><h4 class="note_title">222www...</h4><p class="note_content">xdwwww...</p><small class="note_date">Wed Oct 01 2025 — 11:20:24 AM.</small><button type="checkbox" class="note_checkbox_btn" id="card-btn-arjhZh">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-app uncheckbox_svg " viewBox="0 0 16 16">
+        <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4z"></path>
+    </svg>
+</button></div><div id="1z1Trp" class="note_card"><h4 class="note_title">ww...</h4><p class="note_content">Note content not specified!...</p><small class="note_date">Wed Oct 01 2025 — 11:20:55 AM.</small><button type="checkbox" class="note_checkbox_btn" id="card-btn-1z1Trp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-app uncheckbox_svg " viewBox="0 0 16 16">
+        <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4z"></path>
+    </svg>
+</button></div></section><section id="settings-section" class="settings_section section"><div id="profile-card" class="profile_card"><div id="profile-wrapper" class="profile_wrapper">
+		<figure id="profile-img-wrapper" class="profile_img_wrapper">
+			<img src="../../public/img/favicon.png" class="profile_img" loading="lazy" alt="Profile image" width="100" height="100">
+
 			
-			<div class="more_action_content">
-				<ul class="more_action_list">
-					<li class="more_action_button">Refresh</li>
-					<li class="more_action_button">Settings</li>
-					<li class="more_action_button">Select</li>
-					<li class="more_action_button">Exit</li>
-				</ul>
-			</div>
-		</li>
-		</div>
-	</ul>
-	<div class="theme_card" id="theme-card">
-		<label for="app-theme">App theme</label>
-		<select name="theme" id="app-theme">
-			<option value="system_default">System default</option>
-			<option value="dark_theme">Light theme</option>
-			<option value="light_theme">Dark theme</option>
-		</select>
-	</div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
+    </svg>
 
-	<div id="profile-card" class="profile_card">
-		<div class="profile_wrapper">
-			<figure id="profile-img-wrapper" class="profile_img_wrapper">
-				<img src="${profileImg}" class="profile_img" loading="lazy" alt="Profile image" width="100" height="100">
-				<figcaption class="profile_img_caption">Profile caption</figcaption>
-			</figure>
+			
+			<figcaption class="profile_img_caption">Profile caption</figcaption>
+		</figure>
 
-			<button id="drop-profile-card-btn" class="drop_profile_card_btn">Drop down</button>
+		<div class="profile_card_wrapper">
+			<h class="profile_nick_name">Unknown.</h>
 		</div>
+	</div><div id="user-details" class="user_details">
+		<div class="user_details_wrapper">
+			<h2 class="user_id" id="user-id">User ID: 
+				<span class="id_holder" id="id-holder">46qbIpLhHj</span>
+			</h2>
+
+			<button id="drop-profile-card-btn" class="drop_profile_card_btn profile_btn">
+				
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" fill="currentColor" class="bi bi-chevron-right drop_down_right_angle_svg" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"></path>
+    </svg>
+
+			</button>
+		</div>
+
+		<h4 class="user_name" id="user-name">Name: <span class="name_holder" id="name_-holder">Unknown.</span></h4>
+		<p class="user_email" id="user-email">Email: <span class="email_holder" id="email-holder">Not provided.</span></p>
+		<p class="user_hobbies">Hobby/Hobbies: <span class="hobbies_holder" id="hobbies-holder">None.</span></p>
 		
-		<div class="user_details" id="user-details">
-			<h1 class="user_id" id="user-id">User ID: <span class="id-holder"> 00123</span></h1>
-			<p class="user_name" id="user-name">Name: <span class="id-holder"> ZECCO BOSS</span></p>
-			<p class="user_email" id="user-email">Email: <span class="id-holder"> zeccoboss@hotmail.com</span></p>
-			<p class="user_hobbies">Hobby/Hobbies: <span class="id-holder">Coding, Gaming, Playing...</span></p>
-		</div>
-	</div>
-	</nav>
+		<div class="edit_btn_coontainer">
+			<button id="edit-profile-card-btn" class="edit_profile_card_btn profile_btn"> 
+				
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil edit_profile_pencil_svg" viewBox="0 0 16 16">
+       <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"></path>
+    </svg>
 
-	<form action="">
-		<h3 class="settings_form_heading">Edit data</h3>
-		<input type="text" name="name" id="user-name-input" class="user_name_input settings_form_input" placeholder="Name, (eg. John Doe)">
-		<input type="text" name="nickname" id="user-nicname" class="user_nicname settings_form_input" placeholder="Nck name...">
-		<input type="email" name="email" id="email-input" class="email_input settings_form_input" placeholder="youremail.email.com">
-		<textarea name="" id="" cols="30" rows="5" id="hobbies-textarea" class="hobbies_textarea settings_form_textarea" placeholder="Enter hobbies"></textarea>
-		<div class="settings_form_btm_container">
-			<button type="submit" id="settings-form-submit-btn" class="settings_form_submit_btn settings_form_btn">Done</button>
+				Edit profile
+			</button>
+		</div>
+	</div></div><form id="settings-form" class="settings_form">
+		<h2 class="settings_form_heading">Edit details</h2>
+		<input type="text" name="user name" id="user-name-input" class="user_name_input settings_form_input" placeholder="Name, (eg.Obang Ezekiel)" autocomplete="on">
+		<input type="text" name="nickname" id="user-nicname" class="user_nicname settings_form_input" placeholder="Nick name, (eg. zecco)" autocomplete="on">
+		<input type="email" name="email" id="email-input" class="email_input settings_form_input" placeholder="Email, (eg. youremail.email.com)" autocomplete="on">
+		<textarea name="hobbies" cols="30" rows="5" id="hobbies-textarea" class="hobbies_textarea settings_form_textarea" placeholder="Enter hobbies"></textarea>
+
+		<div class="settings_form_btn_container">
 			<button type="button" id="settings-form-cancle-btn" class="settings_form_cancle_btn settings_form_btn">Cancle</button>
+			<button type="submit" id="settings-form-submit-btn" class="settings_form_submit_btn settings_form_btn">Done</button>
+        </div>
+    </form><div id="theme-card" class="theme_card">
+		<label for="app-theme-list">App theme</label>
+
+		<div id="app-theme-list" class="app_theme_list">
+			<button id="theme-list-toggler" class="theme_list_toggler"><span class="theme_list_term">Dark theme</span> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" fill="currentColor" class="bi bi-chevron-right drop_down_right_angle_svg" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"></path>
+    </svg>
+</button>
+
+			<div class="theme_btn_container">
+				<button id="dark-theme-btn" class="app_theme_btn dark_theme_btn">Dark theme</button>
+				<button id="system-default-btn" class="app_theme_btn system_default_theme_btn">System default</button>
+				<button id="light-theme-btn" class="app_theme_btn light_theme_btn">Light theme</button>
+			</div>
 		</div>
-	</form>
+	</div><div></div></section><section id="form-section" class="form_section section"><form id="note-form" class="note_form"><span id="form-time-element" class="form_time_element">Wed Oct 01 2025 — 11:20:24 AM</span><input class="note_title_input" id="note-title-input" placeholder="Title..."><textarea class="note_textarea" id="note-textarea" placeholder="Start typing..."></textarea><button id="save-button" class="save_button button">Save</button><button id="update-button" class="update_button button show_note_form_btn" type="button">Update</button></form></section><section id="trash-section" class="trash_section section">Hello zecco</section><ul class="highlight_option_container" id="highlight-option-container">
+      <button class="option_list_toggler show_option_list_toggler">Show Option List</button>
 
-	<div class="container">
-		<h4 class="note_title">Note Title</h4>
-		<p class="note_intro">Note paragraph</p>
-		<p class="note_day">20 July</p>
-	</div>
-
-	<select name="theme" id="app-theme-list" class="app_theme_list>
-		<option value="none">None specified</option>
-		
-		<option value="system_default">System default</option>
-
-		<option value="light_theme">Light theme</option>
-		
-		<option value="dark_theme">Dark theme</option>
-	</select>
-
-	<div id="app-theme-list" class="app_theme_list">
-		<button id="theme-list-toggler" class="theme_list_toggler">System default</button>
-
-		<div class="theme_btn_container">
-			<button id="system-default-btn" class="app_theme_btn system_default_btn">System default</button>
-			<button id="light-theme-btn" class="app_theme_btn light_theme_btn">Light theme</button>
-			<button id="dark-theme-btn" class="app_theme_btn dark_theme_btn">Dark theme</button>
-		</div>
-	</div>
-
-	<p>lorem*10</p>
-
-	<div class="theme_btn_container">
-		<button id="dark-theme-btn" class="app_theme_btn dark_theme_btn">Dark theme</button>
-		<button id="light-theme-btn" class="app_theme_btn light_theme_btn">Light theme</button>
-		<button id="system-default-btn" class="app_theme_btn system_default_btn">System default</button>
-	</div>
-
-	<div id="2" class="note_card">
-		<h4 class="note_title">Sunday Note</h4>
-		<p class="note_content">Just indoors with nothing much to do.</p>
-		<small class="note_date">2025-03-17</small>
-		<input type="checkbox" name="select" id="">
-	</div>
-
-	<button>Show Option List</button>
-	<ul class="highlight_option_list" id="highlight-option-list">
-		<li>
-			<button class="delete_btn">
-				${trashIconSVG} 
-				<span>Delete</span></button>
-		</li>
-		<li></li>
-		<li></li>
-	</ul>
-	
-	<footer class="settings_form">
+      <ul class="highlight_option_list" id="highlight-option-list">
+         <li id="delete-option" class="options_list delete_option">
+            
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"></path>
+        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"></path>
+    </svg>
+ 
+            <span>Delete</span>
+         </li>
+      </ul>
+   </ul></main></div><footer class="footer" id="footer">
 		<nav class="footer_nav">
 		<ul class="footer_nav_list">
-			<li>Footer✅</li>
-			<li>Footer✅</li>
+			<li>
+			<button class="select_all_btn button" id="select-all-btn" style="visibility: visible;">
+				
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-check" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0m0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0m0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"></path>
+    </svg>
+
+			</button>
+			</li>
+			<li>
+			<button class="settings_btn button" id="settings-btn" style="visibility: visible;">
+				
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear gear_svg" viewBox="0 0 16 16">
+        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"></path>
+        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"></path>
+    </svg>
+
+			</button>
+			</li>
 		</ul>
 		</nav>
-	</footer>
+	</footer></div>
 
-	<script>
-		   if (e.target === cardCheckbox) {
+	<noscript>
+		<p>All app content is dynamically loaded!</p>
+	</noscript>
+	
+	<script src="./index.js" type="module"></script>
 
-        console.log('kmmmj mjkm');
-        
-        if (cardCheckbox.checked) {
-            cardCheckbox.checked = false;
-            currentTarget.removeAttribute('is-selected', 'selected');
-            console.log(currentTarget);
-        } else {
-            cardCheckbox.checked = true;
-            currentTarget.setAttribute('is-selected', 'selected');
-            console.log(currentTarget);
-        }
-
-    } 
-	</script>
-
-
-
-	<script>
-		    
-    if (!cardCheckbox.checked) {
-        cardCheckbox.checked = true;
-        currentTarget.setAttribute('is-selected', 'selected');
-        console.log(currentTarget);
-    } else {
-        cardCheckbox.checked = false;
-        currentTarget.removeAttribute('is-selected', 'selected');
-        console.log(currentTarget);
-    }
-	</script>
-
-	<script>
-		    if (e.target !== cardCheckbox  && !cardCheckbox.checked) {
-        cardCheckbox.checked = true;
-        currentTarget.setAttribute('is-selected', 'selected');
-    } else if (!e.target !== cardCheckbox  && cardCheckbox.checked) {
-        cardCheckbox.checked = false;
-        currentTarget.removeAttribute('is-selected', 'selected');
-    } 
-
-    e.target === cardCheckbox && cardCheckbox.checked ? 
-        (() => {
-            cardCheckbox.checked = true;
-            currentTarget.removeAttribute('is-selected', 'selected');
-        }) ()
-        : (() => {
-            cardCheckbox.checked = true;
-            currentTarget.setAttribute('is-selected', 'selected');
-        }) ();
-	</script>
 </body>
-
 </html>
-
-
-
-<h1 class="header_nav_heading" id="header-nav-heading">Notes</h1>
-<input type="search" name="" id="search-inpit" class="search_input" aria-label="search notes" autocomplete="on" value="ZECCO" placeholder="Search notes....">

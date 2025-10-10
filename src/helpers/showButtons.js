@@ -9,6 +9,8 @@ const showButtons = () => {
     const{ navHeading, searchInput, titleInput, noteSection, formSection, returnButton, addNotesButton, selectAllBtn, moreActionBtn, settingsBtn } = selectElements();
     returnButton.classList.remove("show_return_button");
 
+    navHeading.innerHTML = 'Notes';
+
     // Hide all buttons
     addNotesButton.style.visibility = "visible";
     searchInput.style.visibility = "visible";

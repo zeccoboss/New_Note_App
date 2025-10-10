@@ -22,7 +22,7 @@ class SetElementAttributes {
     }
     
     removeClass(className) {
-        this.element.classList.removeClass(className);
+        this.element.classList.remove(className);
     }
     
     setPlaceHolder(placeholder) {

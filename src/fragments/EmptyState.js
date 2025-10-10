@@ -25,8 +25,9 @@ const EmptyState = (noteSection) => {
         const selectActionBtn = document.querySelector('#select-action-button');
 
         selectAllBtn.disabled = true;
+        selectActionBtn.classList.add('disabled');
 
-        selectActionBtn.style.background = "gray";
+                selectActionBtn.style.background = "gray";
         selectActionBtn.style.color = "hsl(0, 0%, 19%)";
         return;
 }

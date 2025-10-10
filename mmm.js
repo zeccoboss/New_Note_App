@@ -4,11 +4,11 @@ import GetLocalStorageData from "../../service/GetLocalStorageData.js";
 // Instantiate Class 
 const ManageTheme_AppTheme = new GetLocalStorageData('AppTheme', 'appTheme', 'zecco_note_app-Theme');
 
-// const savedNoteAppTheme = JSON.parse(localStorage.getItem('zecco_note_app-Theme')) || null;
+// const savedNoteAppTheme = JSON.parse(localStorage.getItem('saved-note-app-theme')) || null;
 const savedNoteAppTheme = ManageTheme_AppTheme.getAppTheme();
 
 // Select element from DOM
-const app = document.querySelector('#app');4
+const app = document.querySelector('#app');
 
 // Global variable 
 let isFirstPageLoad = false;
@@ -36,33 +36,32 @@ const clearAllThem = () => {
 	app.classList.remove("system_default");
 }
 
+if (savedNoteAppTheme) {
+	app.classList.add(savedNoteAppTheme);
+}
+
+// // Check and apply saved Theme on page load
+// if (ManageTheme_AppTheme.getAppTheme()  && !isFirstPageLoad) {
+// console.log('mmmmmmmm');
+
+//     // if (darkThemeValue.matches) {
+//     //     useDarkTheme();
+
+//     //     storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
+//     // } else if (!darkThemeValue.matches) {
+//     //     useLightTheme();
+
+//     //     storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
+//     // }
+// }
+
 // set default theme 
 function defaultTheme(themeBtnContainer, themeListTerm, themeValue) {
 	// Select element 
 	const darkThemeBtn = themeBtnContainer.querySelector('.dark_theme_btn');
 	const defaultThemeBtn = themeBtnContainer.querySelector('.system_default_theme_btn');
 	const lightThemeBtn = themeBtnContainer.querySelector('.light_theme_btn');
-
-    // Check and apply saved Theme on page load
-    if (savedNoteAppTheme  && savedNoteAppTheme === 'system_default' && !isFirstPageLoad) {
-        if (darkThemeValue.matches) {
-            useDarkTheme();
-
-            storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
-        } else if (!darkThemeValue.matches) {
-            useLightTheme();
-
-            storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
-        }
-        //
-        isFirstPageLoad = true;
-    } else if (savedNoteAppTheme && !isFirstPageLoad) {
-        //
-        isFirstPageLoad = true;
-        app.classList.add(savedNoteAppTheme);
-    }
-
-    // Add event listener
+	
 	darkThemeValue.addEventListener('change', (e) => {
 		if (e.matches) {
 			useDarkTheme()
@@ -96,7 +95,7 @@ const storThemeAndChangTerm = (themeListTerm, theme, textContent) => {
 
 function applyTheme(themeBtnContainer, themeListTerm) {
 	// Call to apply default theme
-	defaultTheme(themeBtnContainer, themeListTerm);
+	// defaultTheme(themeBtnContainer, themeListTerm);
 
 	// 
 	themeBtnContainer.addEventListener('click', (e) => {

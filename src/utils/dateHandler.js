@@ -3,7 +3,7 @@ const dateHandler = () => {
   const year = date.toDateString();
   const time = date.toLocaleTimeString();
 
-  return `${year} — ${time}`
+  return `${time} — ${year}`
 }
 
 export default dateHandler;

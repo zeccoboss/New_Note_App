@@ -18,6 +18,7 @@ import showSettingsForm from '../events/showSettingsForm.js';
 import closeSettingsForm from '../events/closeSettingsForm.js';
 import appTheme, { applyTheme, savedNoteAppTheme } from '../events/appTheme.js';
 import AboutCard from './AboutCard.js';
+import handleLocalUserData from '../helpers/handleLocalUserData.js';
 
 const SettingsSection = () => {
 	// Create settingsSection element
@@ -73,6 +74,9 @@ const SettingsSection = () => {
 	}
 
 	themeValue() ? themeListTerm.innerHTML = themeValue() : themeListTerm.innerHTML = "";
+
+	// Used to create a new user or update an active user
+	handleLocalUserData(settingsSection);
 
 	// Return settingsSection element
 	return settingsSection; 

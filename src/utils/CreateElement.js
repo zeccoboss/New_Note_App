@@ -14,6 +14,10 @@ class CreateElement extends SetInnerHTML {
     setType(type) {
         this.element.setAttribute('type', type);
     }
+
+    disableElement(value) {
+        this.element.disabled = value;
+    }
 }
 
 export default CreateElement;

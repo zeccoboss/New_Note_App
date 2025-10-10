@@ -8,6 +8,8 @@ import showButtons from "./showButtons.js";
 import { updateNote } from "../../service/notesService.js";
 
 const navigateHome  = (event) => {
+    const main = document.querySelector('main');
+
     // Destruct and get elements from the selectElements fintion
     const sections = Array.from(main.querySelectorAll('.section'));
 
