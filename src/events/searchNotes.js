@@ -41,7 +41,7 @@ const searchNotes = async (noteSection) => {
         const allNotes = await ManageNoteData_SearchNote.getNoteData();
 
         // Get live value from search input
-        let serchValue = e.target.value.trim();
+        let serchValue = e.target.value.trim().toLowerCase();
 
         // Filter notes 
         const filteredNotesArray = allNotes.filter((data) => {
