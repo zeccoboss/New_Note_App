@@ -39,27 +39,27 @@ const StateMessage = (section, message="No message passed") => {
 
 
 		// // Add a timer to clear StateMessage 
-		// intervalId = setInterval(() => {
-		// 	if (countDown > 0 && countDown <= 10) {
-		// 		countDown--;
-		// 		StateMessageTimer.setInnerHTML(`${countDown.toString().padStart(2, 0)}`);
-		// 	} else {
-		// 		// Get all StateMessage from DOM and clear it off
-		// 		const sms = Array.from(main.querySelectorAll('.state_message'));
-		// 		sms.length > 0
-		// 		? sms.forEach(el => {
-		// 			el.remove();
-		// 			el.style.display = 'none';
-		// 		}) : console.warn('No state message to clear!');
+		intervalId = setInterval(() => {
+			if (countDown > 0 && countDown <= 10) {
+				countDown--;
+				StateMessageTimer.setInnerHTML(`${countDown.toString().padStart(2, 0)}`);
+			} else {
+				// Get all StateMessage from DOM and clear it off
+				const sms = Array.from(main.querySelectorAll('.state_message'));
+				sms.length > 0
+				? sms.forEach(el => {
+					el.remove();
+					el.style.display = 'none';
+				}) : console.warn('No state message to clear!');
+	
+				// Reset countdown value
+				countDown = 3;
 
-		// 		// Reset countdown value
-		// 		countDown = 3;
-
-		// 		// Clear the time interval function
-		// 		clearInterval(intervalId);
-		// 		// StateMessageBtn.disableElement(false);
-		// 	}
-		// }, 1000);
+				// Clear the time interval function
+				clearInterval(intervalId);
+				// StateMessageBtn.disableElement(false);
+			}
+		}, 1000);
 
 		// Append childtren
 		StateMessageBtn.getElement().append(StateMessageTimer.getElement()); // Addpenmt the timer to cancle button

@@ -343,15 +343,15 @@ body {
 /* Main --> StateMessage */
 .state_message {
 	color: rgb(255, 255, 255);
-	/* display: none; */
 	position: fixed;
 	top: 10rem;
 	left: 50%;
 	transform: translate(-50%);
-	border-radius: 1rem;
-	box-shadow: 2px 1px 4px rgba(104, 104, 104, 0.527);
+	border-radius: 0.2rem;
+	/* box-shadow: 2px 1px 4px rgba(104, 104, 104, 0.527); */
 	font-size: 0.8rem;
-	background: linear-gradient(gray, rgb(29, 28, 28));
+	background-color: rgb(53, 52, 52);
+	/* background: linear-gradient(gray, rgb(29, 28, 28)); */
 	/* animation: name duration timing-function delay iteration-count direction fill-mode; */
 }
 
@@ -377,18 +377,18 @@ body {
 
 .state_message_content {
 	margin-left: 0.5rem;
-	text-shadow: 0px 1px 1px white;
 }
 
 .state_message_btn {
 	padding: var(--PADDING);
-	border-radius: 0.7rem;
+	border-radius: 0.3rem;
 	color: aliceblue;
 	background: transparent;
-	border: none;
-	box-shadow: var(--ACCENT-SHADOW);
+	border: 1px solid white;
+	/* box-shadow: var(--ACCENT-SHADOW); */
 	cursor: pointer;
-	background-color: rgba(0, 0, 0, 0.411);
+	margin-left: 1rem;
+	display: inline-block;
 }
 
 .state_message_timer {

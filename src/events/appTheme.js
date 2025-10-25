@@ -7,6 +7,9 @@ const ManageTheme_AppTheme = new GetLocalStorageData('AppTheme', 'appTheme', 'ze
 // const savedNoteAppTheme = JSON.parse(localStorage.getItem('zecco_note_app-Theme')) || null;
 const savedNoteAppTheme = ManageTheme_AppTheme.getAppTheme();
 
+console.log(savedNoteAppTheme);
+
+
 // Select element from DOM
 const app = document.querySelector('#app');4
 
@@ -48,11 +51,11 @@ function defaultTheme(themeBtnContainer, themeListTerm, themeValue) {
         if (darkThemeValue.matches) {
             useDarkTheme();
 
-            storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
+            storeThemeAndChangTerm(themeListTerm, "system_default", "System default", defaultThemeBtn);
         } else if (!darkThemeValue.matches) {
             useLightTheme();
 
-            storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
+            storeThemeAndChangTerm(themeListTerm, "system_default", "System default", defaultThemeBtn);
         }
         //
         isFirstPageLoad = true;
@@ -67,27 +70,27 @@ function defaultTheme(themeBtnContainer, themeListTerm, themeValue) {
 		if (e.matches) {
 			useDarkTheme()
 
-			storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
+			storeThemeAndChangTerm(themeListTerm, "system_default", "System default", defaultThemeBtn);
 		} else {
 			useLightTheme();
 
-			storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
+			storeThemeAndChangTerm(themeListTerm, "system_default", "System default", defaultThemeBtn);
 		}
 	});
 
 	if (themeValue && darkThemeValue.matches) {
 		useDarkTheme();
 
-		storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
+		storeThemeAndChangTerm(themeListTerm, "system_default", "System default", defaultThemeBtn);
 	} else if (themeValue && !darkThemeValue.matches) {
 		useLightTheme();
 
-		storThemeAndChangTerm(themeListTerm, "system_default", "System efault", defaultThemeBtn);
+		storeThemeAndChangTerm(themeListTerm, "system_default", "System default", defaultThemeBtn);
 	}
 }
 
 // Save theme and change themeListTerm content
-const storThemeAndChangTerm = (themeListTerm, theme, textContent) => {
+const storeThemeAndChangTerm = (themeListTerm, theme, textContent) => {
 	themeListTerm.innerHTML = textContent;
 
 	// Save value to local storage
@@ -112,7 +115,7 @@ function applyTheme(themeBtnContainer, themeListTerm) {
 			useDarkTheme();
 
 			// Call to save theme to local storage
-			storThemeAndChangTerm(themeListTerm,"dark_theme", "Dark theme", eventTarget);
+			storeThemeAndChangTerm(themeListTerm,"dark_theme", "Dark theme", eventTarget);
 		} else if (eventTarget === defaultThemeBtn) {
 			// 
 			defaultTheme(themeBtnContainer, themeListTerm, true)
@@ -120,7 +123,7 @@ function applyTheme(themeBtnContainer, themeListTerm) {
 			useLightTheme();
 
 			// Call to save theme to local storage
-			storThemeAndChangTerm(themeListTerm, "light_theme", "Light theme", eventTarget);
+			storeThemeAndChangTerm(themeListTerm, "light_theme", "Light theme", eventTarget);
 		} else {
 			clearAllThem();
 		}

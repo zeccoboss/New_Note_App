@@ -17,7 +17,7 @@ const ThemeCard = () => {
 		<label for="app-theme-list">App theme</label>
 
 		<div id="app-theme-list" class="app_theme_list">
-			<button id="theme-list-toggler" class="theme_list_toggler"><span class="theme_list_term">System default</span> ${dropDownRightAngleSvg}</button>
+			<button id="theme-list-toggler" class="theme_list_toggler"><span class="theme_list_term">Light theme</span> ${dropDownRightAngleSvg}</button>
 
 			<div class="theme_btn_container">
 				<button id="dark-theme-btn" class="app_theme_btn dark_theme_btn">Dark theme</button>

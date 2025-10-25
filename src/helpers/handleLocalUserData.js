@@ -9,7 +9,6 @@ import StateMessage from "../fragments/StateMessage.js";
 
 // Import helpes
 import randomCharGenerator from "./generateRandomChar.js";
-import { addNoteSvg } from "../assets/svg/svg-icons.js";
 
 // Instantiate Class 
 const manageUserData_CreateUser = new GetLocalStorageData('UserData', 'handleLocalUserData', 'zecco_note_app-User');

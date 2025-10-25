@@ -28,7 +28,7 @@ const searchNotes = async (noteSection) => {
         search = false;
 
         // Render notes
-        renderNote(allNotes, noteSection, 5);
+        // renderNote(allNotes, noteSection, 5);
         return;
     });
 

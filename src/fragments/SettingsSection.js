@@ -73,7 +73,7 @@ const SettingsSection = () => {
 		return null;
 	}
 
-	themeValue() ? themeListTerm.innerHTML = themeValue() : themeListTerm.innerHTML = "";
+	// themeValue() ? themeListTerm.innerHTML = themeValue() : themeListTerm.innerHTML = "";
 
 	// Used to create a new user or update an active user
 	handleLocalUserData(settingsSection);

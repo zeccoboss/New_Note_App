@@ -172,8 +172,3 @@ class GetLocalStorageData {
 }
 
 export default GetLocalStorageData;
-
-
-// saved-note-app-theme	"light_theme"
-// zecco_note_app	[{"id":"DDBxEr","title":"kjeb.j","content":"jkd b","date":"9:31:14 AM — Sat Oct 04 2025"},{"id":"FSQsBu","title":"bns","content":"jkbe","date":"9:31:09 AM — Sat Oct 04 2025"},{"id":"E2EP3y","title":"ww","content":"w","date":"9:31:00 AM — Sat Oct 04 2025"},{"id":"a31drg","title":"sss","content":"Note content not specified!","date":"7:30:42 AM — Sat Oct 04 2025"}]
-// zecco_note_app_user	{"id":"33IsiOjrag","userName":"Obang Ezekiel.","nickname":"ZECCO.","email":"youngzecco@gmail.com.","hobbies":"Coding, Trouble Making & Sleeping."}
