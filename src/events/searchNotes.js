@@ -19,18 +19,18 @@ const searchNotes = async (noteSection) => {
     let search = true;
 
     //  Clear search when search input loss focucus and 
-    searchInput.addEventListener('blur', async (e) => {
-        // Retrive the stored notes value thats in memory
-        const allNotes = await ManageNoteData_SearchNote.getNoteData();
+    // searchInput.addEventListener('blur', async (e) => {
+    //     // Retrive the stored notes value thats in memory
+    //     const allNotes = await ManageNoteData_SearchNote.getNoteData();
 
-        // Clear search input
-        searchInput.value = '';
-        search = false;
+    //     // Clear search input
+    //     searchInput.value = '';
+    //     search = false;
 
-        // Render notes
-        // renderNote(allNotes, noteSection, 5);
-        return;
-    });
+    //     // Render notes
+    //     // renderNote(allNotes, noteSection, 5);
+    //     return;
+    // });
 
     // Add event listiner to search to filter notes and call the render function to display the resault
     searchInput.addEventListener('input', searchNotesLogic);
